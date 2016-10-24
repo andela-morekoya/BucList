@@ -1,6 +1,7 @@
 Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (needs plugins)
   orm :active_record
+<<<<<<< HEAD
   access_token_generator 'Doorkeeper::JWT'
 
   # This block will be called to check whether the resource owner is authenticated or not.
@@ -11,6 +12,19 @@ Doorkeeper.configure do
     User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
   end
 
+=======
+
+  # This block will be called to check whether the resource owner is authenticated or not.
+  resource_owner_authenticator do
+    # fail "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
+    # Put your resource owner authentication logic here.
+    # Example implementation:
+      User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+  end
+
+  access_token_generator "Doorkeeper::JWT"
+
+>>>>>>> setup doorkeeper
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
   # admin_authenticator do
   #   # Put your admin authentication logic here.
@@ -136,13 +150,21 @@ Doorkeeper::JWT.configure do
   # Set the encryption secret. This would be shared with any other applications
   # that should be able to read the payload of the token.
   # Defaults to "secret"
+<<<<<<< HEAD
   # secret_key "MY-SECRET"
   secret_key 'PI3E6ELGFZ'
+=======
+  secret_key "MY-SECRET"
+>>>>>>> setup doorkeeper
 
   # If you want to use RS* encoding specify the path to the RSA key
   # to use for signing.
   # If you specify a secret_key_path it will be used instead of secret_key
+<<<<<<< HEAD
   secret_key_path 'path/to/file.pem'
+=======
+  secret_key_path "path/to/file.pem"
+>>>>>>> setup doorkeeper
 
   # Specify encryption type. Supports any algorithim in
   # https://github.com/progrium/ruby-jwt

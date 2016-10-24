@@ -16,14 +16,21 @@ gem 'active_model_serializers'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'sqlite3'
+  gem 'faker'
 end
 
 group :test do
   gem 'database_cleaner'
+<<<<<<< HEAD
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'
+=======
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+>>>>>>> setup doorkeeper
 end
 
 group :development do

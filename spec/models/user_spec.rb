@@ -16,8 +16,7 @@ RSpec.describe User, type: :model do
   end
 
   # describe "Associations" do
-  #   it { is_expected.to have_many(:links) }
-  #   it { is_expected.to have_many(:visits) }
+  #   it { is_expected.to have_many(:bucketlists) }
   # end
 >>>>>>> write user model tests
 end
