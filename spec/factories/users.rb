@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :user do
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     email { Faker::Internet.email }
 =======
     email Faker::Internet.email
@@ -11,5 +12,13 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
 >>>>>>> write code for user#create
+=======
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+=======
+    email Faker::Internet.email
+    password Faker::Internet.password
+>>>>>>> create bucketlist models
+>>>>>>> create bucketlist models
   end
 end

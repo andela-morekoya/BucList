@@ -18,9 +18,12 @@ gem 'jquery-rails'
 gem 'coveralls', require: false
 =======
 gem 'coveralls'
+<<<<<<< HEAD
 >>>>>>> get model tests to pass
 gem 'doorkeeper'
 gem 'doorkeeper-jwt'
+=======
+>>>>>>> create bucketlist models
 gem 'active_model_serializers'
 
 group :development, :test do
@@ -40,7 +43,11 @@ group :test do
 =======
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+<<<<<<< HEAD
 >>>>>>> setup doorkeeper
+=======
+  gem "json_matchers"
+>>>>>>> create bucketlist models
 end
 
 group :development do

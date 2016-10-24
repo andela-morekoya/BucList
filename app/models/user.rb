@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  
-  has_secure_password
 
   before_save { email.downcase! }
   validates :email, presence: true,
@@ -22,6 +20,11 @@ class User < ApplicationRecord
 >>>>>>> get model tests to pass
 =======
   validates :password, length: { minimum: 6 }, on: :create
+<<<<<<< HEAD
 
 >>>>>>> refactor code for user#update
+=======
+  
+  has_secure_password
+>>>>>>> create bucketlist models
 end

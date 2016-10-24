@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Bucketlist, type: :model do
+<<<<<<< HEAD
   describe 'Associations' do
     it { is_expected.to belong_to(:user).dependent(:destroy) }
     it { is_expected.to have_many :items }
@@ -25,4 +26,7 @@ RSpec.describe Bucketlist, type: :model do
       end
     end
   end
+=======
+  pending "add some examples to (or delete) #{__FILE__}"
+>>>>>>> create bucketlist models
 end
