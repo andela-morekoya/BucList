@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161028142932) do
+=======
+ActiveRecord::Schema.define(version: 20161024114828) do
+>>>>>>> get model tests to pass
 
   create_table "bucketlists", force: :cascade do |t|
     t.string   "name"
@@ -68,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161028142932) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+<<<<<<< HEAD
   create_table "tokens", force: :cascade do |t|
     t.string   "token"
     t.integer  "user_id"
@@ -77,6 +82,8 @@ ActiveRecord::Schema.define(version: 20161028142932) do
     t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
+=======
+>>>>>>> get model tests to pass
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
