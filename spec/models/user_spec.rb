@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> write link model test
   describe "Validations" do
     subject { FactoryGirl.build(:user) }
 
@@ -18,5 +21,11 @@ RSpec.describe User, type: :model do
   # describe "Associations" do
   #   it { is_expected.to have_many(:bucketlists) }
   # end
+<<<<<<< HEAD
 >>>>>>> write user model tests
+=======
+=======
+  
+>>>>>>> write link model test
+>>>>>>> write link model test
 end

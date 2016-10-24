@@ -1,6 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 <<<<<<< HEAD
+<<<<<<< HEAD
 abort('The Rails environment is running in production mode!') \
   if Rails.env.production?
 =======
@@ -13,6 +14,13 @@ Coveralls.wear!('rails')
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+=======
+abort("The Rails environment is running in production mode!") \
+  if Rails.env.production?
+require 'spec_helper'
+require 'rspec/rails'
+
+>>>>>>> write link model test
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -20,6 +28,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/factories"
 =======
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+<<<<<<< HEAD
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -40,6 +49,12 @@ RSpec.configure do |config|
 =======
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+=======
+  config.use_transactional_fixtures = true
+  config.infer_spec_type_from_file_location!
+  config.filter_rails_from_backtrace!
+
+>>>>>>> write link model test
   Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

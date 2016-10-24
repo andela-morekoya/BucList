@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 <<<<<<< HEAD
 ruby '2.3.1'
@@ -51,14 +51,14 @@ group :test do
 end
 
 group :development do
-  gem 'web-console'
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "web-console"
+  gem "listen", "~> 3.0.5"
+  gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
 end
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

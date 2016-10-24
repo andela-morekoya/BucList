@@ -1,7 +1,5 @@
+
 class Item < ApplicationRecord
-<<<<<<< HEAD
-  belongs_to :bucketlist, dependent: :destroy # , counter_cache: true
+  belongs_to :bucketlist, dependent: :destroy
   validates :name, presence: true
-=======
->>>>>>> create bucketlist models
 end
