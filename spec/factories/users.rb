@@ -3,6 +3,7 @@ FactoryGirl.define do
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     email { Faker::Internet.email }
 =======
     email Faker::Internet.email
@@ -20,5 +21,9 @@ FactoryGirl.define do
     password Faker::Internet.password
 >>>>>>> create bucketlist models
 >>>>>>> create bucketlist models
+=======
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+>>>>>>> add destroy depndency
   end
 end

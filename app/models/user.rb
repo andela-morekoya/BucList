@@ -26,5 +26,10 @@ class User < ApplicationRecord
 =======
   
   has_secure_password
+<<<<<<< HEAD
 >>>>>>> create bucketlist models
+=======
+
+  has_many :bucketlists
+>>>>>>> add destroy depndency
 end

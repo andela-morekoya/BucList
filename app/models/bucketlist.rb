@@ -1,5 +1,6 @@
 class Bucketlist < ApplicationRecord
 <<<<<<< HEAD
+<<<<<<< HEAD
   belongs_to :user, dependent: :destroy
   has_many :items
   validates :name, presence: true
@@ -9,4 +10,10 @@ class Bucketlist < ApplicationRecord
   end
 =======
 >>>>>>> create bucketlist models
+=======
+  belongs_to :user, dependent: :destroy
+  has_many :items
+  validates :name, presence: true
+>>>>>>> add destroy depndency
 end
+
