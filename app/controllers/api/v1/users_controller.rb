@@ -55,7 +55,16 @@ class Api::V1::UsersController < ApplicationController
   def show
     render json: @user
   end
-  
+
+  def create
+    user = User.new(user_params)
+
+    if user.save
+      render json: user, status: 201
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+  end
 
   private
     def set_user
@@ -64,7 +73,7 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email, :password_digest)
+      params.require(:user).permit(:email, :password)
     end
 >>>>>>> change user controller
 end
