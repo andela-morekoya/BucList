@@ -1,33 +1,21 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::UsersController, type: :controller do
-  include Messages
+  before { request.headers['Accept'] = "application/vnd.secchio.v1" }
 
-  describe "#new" do
-    it "shows the create account page" do
-      get :new
-      expect(assigns(:user)).to be_a_new User
-      expect(response).to render_template("new")
-    end
-  end
+  describe "GET #show" do
+    let(:user) { FactoryGirl.create :user }
 
-  describe "#create" do
-    context "with valid params" do
-      it "creates valid user" do
-        post :create, params { user: FactoryGirl.attributes_for(:user) }
-
-        expect(User.count).to eq 1
-        expect(session[:user_id]).to_not be_nil
-        expect(flash[:notice]).to eq success("Account", "created")
-      end
+    before do
+      get :show, params: { id: user.id }
     end
 
-    context "with invalid params" do
-      it "reloads the signup page with errors listed" do
-        post :create, user: { email: "invalid" }
-
-        expect(response).to render_template "new"
-      end
+    it "returns the information about a reporter on a hash" do
+      user_response = JSON.parse(response.body)
+      expect(user_response["email"]).to eql user.email
     end
+
+    it { is_expected.to respond_with 200 }
   end
 end
+# curl -H 'Accept: application/vnd.secchio.v1' http://localhost:3000/users/1

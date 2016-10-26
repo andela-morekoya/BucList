@@ -48,4 +48,23 @@ module Api
       end
     end
   end
+=======
+class Api::V1::UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  def show
+    render json: @user
+  end
+  
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def user_params
+      params.require(:user).permit(:email, :password_digest)
+    end
+>>>>>>> change user controller
 end
