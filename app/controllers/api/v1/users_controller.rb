@@ -74,6 +74,14 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if @user.destroy
+      render json: @user
+    else
+      render json: { errors: @user.errors }
+    end
+  end
+
   private
     def set_user
       @user = User.find_by(id: params[:id])
