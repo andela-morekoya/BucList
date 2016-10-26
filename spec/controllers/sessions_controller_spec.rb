@@ -26,6 +26,7 @@ RSpec.describe SessionsController, type: :controller do
         post :create, session: { email: user.email, password: "correct" }
 
         expect(session[:user_id]).to_not be_nil
+        expect(response).to redirect_to dashboard_path
       end
     end
   end
@@ -35,6 +36,7 @@ RSpec.describe SessionsController, type: :controller do
       post :destroy, session: { email: user.email, password: user.password }
 
       expect(session[:user_id]).to be_nil
+      expect(response).to redirect_to root_path
     end
   end
 end
