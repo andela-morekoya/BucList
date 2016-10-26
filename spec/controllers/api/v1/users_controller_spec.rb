@@ -69,4 +69,15 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
   end
+
+  
+  describe "#delete" do
+    it "deletes the specified user" do
+      user = FactoryGirl.create(:user)
+      
+      process :delete, method: :destroy, params: { id: user.id }
+
+      expect(User.find_by(id: user.id)).to be_nil
+    end
+  end
 end 
