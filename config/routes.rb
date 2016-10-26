@@ -3,6 +3,7 @@ require 'api_constraints'
 Rails.application.routes.draw do
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   namespace :api, defaults: { format: :json } do
     scope module: :v1,
           constraints: ApiConstraints.new(version: 1, default: true) do
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
       end
 =======
 =======
+=======
+  root "home#index"
+>>>>>>> implement versioning
   get "/login"     => "sessions#new"
   post "/login"    => "sessions#create"
   get "/logout"    => "sessions#destroy"
@@ -26,7 +30,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: { format: :json } do
-    scope module: :v1 do
+    scope module: :v1, 
+                  constraints: ApiConstraints.new(version: 1, default: true) do
       
 >>>>>>> setup doorkeeper
     end

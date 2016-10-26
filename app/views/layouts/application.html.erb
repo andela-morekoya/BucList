@@ -10,7 +10,7 @@
 </head>
 <body>
   <% #= select_nav %>
-  <%= render "layouts/nav" %>
+  <%= render "layouts/nav" unless current_user %>
   
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>" role="alert">
