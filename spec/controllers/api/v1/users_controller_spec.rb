@@ -49,7 +49,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         new_email = "abc@valid.com"
 
         process :update, method: :patch, 
-                         params: { user: { email: new_email } }
+                         params: { id: user.id, user: { email: new_email} }
 
         user_response = JSON.parse(response.body)
         expect(user_response["email"]).to eq new_email
@@ -61,14 +61,12 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         new_email = "abc@invalid"
 
         process :update, method: :patch, 
-                         params: { user: { email: new_email } }
+                         params: { id: user.id, user: { email: new_email } }
 
         user_response = JSON.parse(response.body)
-
         expect(user_response).to have_key("errors")
         expect(user_response["errors"]["email"][0]).to eq "is invalid"
       end
     end
   end
-end
-# curl -H 'Accept: application/vnd.secchio.v1' http://localhost:3000/users/1
+end 

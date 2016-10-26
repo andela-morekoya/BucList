@@ -5,11 +5,15 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX }
+<<<<<<< HEAD
   validates :password, length: { minimum: 6 }
 <<<<<<< HEAD
   has_secure_password
   has_many :bucketlists
 =======
+=======
+  # validates :password, length: { minimum: 6 }
+>>>>>>> write code for user#update
 
   has_secure_password
 >>>>>>> get model tests to pass
