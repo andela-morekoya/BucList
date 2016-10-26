@@ -1,10 +1,13 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  
+  has_secure_password
 
   before_save { email.downcase! }
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX }
+<<<<<<< HEAD
 <<<<<<< HEAD
   validates :password, length: { minimum: 6 }
 <<<<<<< HEAD
@@ -17,4 +20,8 @@ class User < ApplicationRecord
 
   has_secure_password
 >>>>>>> get model tests to pass
+=======
+  validates :password, length: { minimum: 6 }, on: :create
+
+>>>>>>> refactor code for user#update
 end

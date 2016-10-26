@@ -1,13 +1,17 @@
 require "rails_helper"
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe Api::V1::SessionsController, type: :controller do
   let(:user) { FactoryGirl.create(:user, password: "correct") }
 
-  describe "#new" do
-    it "renders login page" do
-      get :new
+  describe "#create" do
+    context "with correct login details" do
+      it "renders user's authentication token" do
+        login_details = { email: user.email, password: "correct"}
 
-      expect(response).to render_template "new"
+        process :create, method: :post, params{ user: { login_details } } 
+
+        expect(response.body).to include "token"
+      end
     end
   end
 
@@ -40,3 +44,4 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 end
+# {"users":[{"email":"try@here.com","password":"unsecure"}]}
