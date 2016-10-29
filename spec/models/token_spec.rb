@@ -8,6 +8,7 @@ RSpec.describe Token, type: :model do
   describe "Validations" do
     it { is_expected.to validate_presence_of :token }
     it { is_expected.to have_uniqueness }
+  end
 
   describe "#is_valid" do
     let!(:user) { FactoryGirl.create(:user) }
