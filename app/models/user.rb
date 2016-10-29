@@ -40,7 +40,7 @@ class User < ApplicationRecord
   has_one :token
 
   def generate_token
-    #
+    # 3
   end
 >>>>>>> commit changes in preparation for cherry picking
 end

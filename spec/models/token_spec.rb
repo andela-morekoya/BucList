@@ -31,4 +31,11 @@ RSpec.describe Token, type: :model do
       end
     end
   end
+
+  describe "#generate_token" do
+    it "generates a unique authentication token" do
+      user = FactoryGirl.create(:user)
+      user.create_token()
+
+
 end
