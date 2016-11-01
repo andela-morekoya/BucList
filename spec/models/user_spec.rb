@@ -66,5 +66,16 @@ RSpec.describe User, type: :model do
       end
     end
   end
+<<<<<<< HEAD
 >>>>>>> fix rubocop issues
+=======
+
+  describe "#generate_token" do
+    it "generates a authentication token" do
+      user = FactoryGirl.create(:user)
+      user.generate_token()
+      expect(user.token).to_not be_nil
+    end
+  end
+>>>>>>> write test for #generate_token in user
 end
