@@ -33,11 +33,20 @@ RSpec.describe Token, type: :model do
   end
 
   describe "#is_valid" do
-    it "checks that a token is still valid" do
-      user = FactoryGirl.create(:user)
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
       user.generate_token
-      
+    end
+
+    it "checks that a token is still valid" do
       expect(user.token.is_valid).to be true
+    end
+
+    it "returns false when token is expired" do
+      user.token.update(expires_at: 3.hours.ago)
+      
+      expect(user.token.is_valid).to be false
     end
   end
 end
