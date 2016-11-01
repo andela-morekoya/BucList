@@ -32,10 +32,11 @@ RSpec.describe Token, type: :model do
     end
   end
 
-  describe "#generate_token" do
-    it "generates a unique authentication token" do
+  describe "#is_valid" do
+    it "checks that a token is still valid" do
       user = FactoryGirl.create(:user)
-      user.create_token()
-
-
+      user.token.generate()
+      expect(user.token).to be true
+    end
+  end
 end
