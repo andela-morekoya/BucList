@@ -7,6 +7,5 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 6 }
   has_secure_password
-
   has_many :bucketlists
 end
