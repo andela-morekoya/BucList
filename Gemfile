@@ -5,10 +5,14 @@ ruby '2.3.1'
 =======
 ruby "2.3.1"
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> get model tests to pass
 =======
 <<<<<<< HEAD
 >>>>>>> add travis
+=======
+
+>>>>>>> add coveralls
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'puma', '~> 3.0'
 gem 'jquery-rails'
@@ -17,6 +21,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'bcrypt', '~> 3.1.7'
+<<<<<<< HEAD
 <<<<<<< HEAD
 gem 'jquery-rails'
 gem 'coveralls', require: false
@@ -28,6 +33,9 @@ gem 'doorkeeper'
 gem 'doorkeeper-jwt'
 =======
 >>>>>>> create bucketlist models
+=======
+gem 'coveralls', require: false
+>>>>>>> add coveralls
 gem 'active_model_serializers'
 
 group :development, :test do

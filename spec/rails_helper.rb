@@ -19,11 +19,14 @@ abort("The Rails environment is running in production mode!") \
   if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'coveralls'
+Coveralls.wear!('rails')
 
 <<<<<<< HEAD
 >>>>>>> write link model test
 =======
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+<<<<<<< HEAD
 >>>>>>> convert controller specs to feature tests
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -54,6 +57,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 =======
+=======
+
+ActiveRecord::Migration.maintain_test_schema!
+
+RSpec.configure do |config|
+  config.fixture_path = "#{::Rails.root}/spec/factories"
+>>>>>>> add coveralls
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
