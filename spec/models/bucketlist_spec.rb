@@ -10,5 +10,11 @@ RSpec.describe Bucketlist, type: :model do
     it { is_expected.to validate_presence_of :name }
   end
 
+  describe "search" do
+    it "returns the list of bucketlists matching the query supplied" do
+      dream = FactoryGirl.create(:bucketlist, name: "My life dreams ") }
 
+      expect(BucketList.search({q: "dream"})).to eq([dream])
+    end
+  end
 end
