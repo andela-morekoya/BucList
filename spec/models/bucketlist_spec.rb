@@ -14,7 +14,7 @@ RSpec.describe Bucketlist, type: :model do
     it "returns the list of bucketlists matching the query supplied" do
       dream = FactoryGirl.create(:bucketlist, name: "My life dreams ")
 
-      expect(Bucketlist.search({ q: "dream" })).to eq([dream])
+      expect(Bucketlist.search("dream")).to eq([dream])
     end
   end
 end
