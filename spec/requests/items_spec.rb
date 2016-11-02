@@ -1,44 +1,60 @@
 require 'rails_helper'
 
 RSpec.describe "Items", type: :request do
-  let(:list) { FactoryGirl.build(:item) }
+  let(:header) { { 
+    "ACCEPT" => "application/vnd.secchio.v1",
+    "CONTENT-TYPE" => "application/json" 
+  } }
 
-  before do
-    FactoryGirl.build(:item)
-  end
+  let(:list) { FactoryGirl.create(:bucketlist) }
+
+  let(:item) { FactoryGirl.create(:item, bucketlist_id: list.id) }
 
   describe "GET /bucketlists/<id>/items" do
     it "gets all items in specified bucket list" do
-      get api_bucketlist_item_path, bucketlist_id: 1
+
+      get "/api/bucketlists/#{list.id}/items", headers: header
+
       expect(response).to have_http_status(200)
+      expect(response.body).to eq ActiveModelSerializers::SerializableResource.
+        new(list.items, {}).to_json
     end
   end
 
   describe "POST /bucketlists/<id>/items" do
     it "creates an item in specified bucket list" do
-      post api_bucketlist_items_path, name: 1ist.name
-      expect(response).to have_http_status(200)
+      post "/api/bucketlists/#{list.id}/items", 
+      params: '{ "item": { "name": "New item" } }', headers: header
+
+      expect(response).to have_http_status(201)
+      expect(json[:name]).to eq "New item"
     end
   end
 
   describe "GET /bucketlists/<id>/items/<id>" do
     it "gets a single item in specified bucket list" do
-      get api_bucketlist_item_path, bucketlist_id: 1, id: 1
+      get "/api/bucketlists/#{list.id}/items/#{item.id}", headers: header
+
       expect(response).to have_http_status(200)
+      expect(json).to include item
     end
   end
 
   describe "PUT /bucketlists/<id>/items/<id>" do
     it "updates a single item in specified bucket list" do
-      put api_bucketlist_item_path, bucketlist_id: 1, id: 1, done: true
+      put "/api/bucketlists/#{list.id}/items/#{item.id}", 
+      params: '{ "item": { "done": "true" } }', headers: header
+
       expect(response).to have_http_status(200)
+      expect(json[:done]).to eq true
     end
   end
 
   describe "DELETE /bucketlists/<id>/items/<id>" do
     it "deletes a single item in specified bucket list" do
-      delete api_bucketlist_item_path, bucketlist_id: 1, id: 1
-      expect(response).to have_http_status(200)
+      delete "/api/bucketlists/#{list.id}/items/#{item.id}", headers: header
+
+      expect(response).to have_http_status(204)
     end
   end
 end
