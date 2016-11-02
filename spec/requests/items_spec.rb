@@ -22,12 +22,23 @@ RSpec.describe "Items", type: :request do
   end
 
   describe "POST /bucketlists/<id>/items" do
-    it "creates an item in specified bucket list" do
-      post "/api/bucketlists/#{list.id}/items", 
-      params: '{ "item": { "name": "New item" } }', headers: header
+    context "with valid parameters" do
+      it "creates an item in specified bucket list" do
+        post "/api/bucketlists/#{list.id}/items", 
+        params: '{ "item": { "name": "New item" } }', headers: header
 
-      expect(response).to have_http_status(201)
-      expect(json[:name]).to eq "New item"
+        expect(response).to have_http_status(201)
+        expect(json[:name]).to eq "New item"
+      end
+    end
+
+    context "with invalid parameters" do
+      it "returns status 400" do
+        post "/api/bucketlists/#{list.id}/items", 
+        params: '{ "item": { "name": "" } }', headers: header
+
+        expect(response).to have_http_status(400)
+      end
     end
   end
 
@@ -36,17 +47,29 @@ RSpec.describe "Items", type: :request do
       get "/api/bucketlists/#{list.id}/items/#{item.id}", headers: header
 
       expect(response).to have_http_status(200)
-      expect(json).to include item
+      expect(response.body).to eq ActiveModelSerializers::SerializableResource.
+        new(item, {}).to_json
     end
   end
 
   describe "PUT /bucketlists/<id>/items/<id>" do
-    it "updates a single item in specified bucket list" do
-      put "/api/bucketlists/#{list.id}/items/#{item.id}", 
-      params: '{ "item": { "done": "true" } }', headers: header
+    context "with valid parameters" do
+      it "updates a single item in specified bucket list" do
+        put "/api/bucketlists/#{list.id}/items/#{item.id}", 
+        params: '{ "item": { "done": "true" } }', headers: header
 
-      expect(response).to have_http_status(200)
-      expect(json[:done]).to eq true
+        expect(response).to have_http_status(200)
+        expect(json[:done]).to eq true
+      end
+    end
+
+    context "with invalid parameters" do
+      it "returns status 400" do
+        put "/api/bucketlists/#{list.id}/items/#{item.id}", 
+        params: '{ "item": { "name": "" } }', headers: header
+
+        expect(response).to have_http_status(400)
+      end
     end
   end
 

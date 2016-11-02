@@ -5,5 +5,5 @@ class ItemSerializer < ActiveModel::Serializer
   attribute :updated_at, key: :date_modified
   attribute :done
 
-  belongs_to :bucketlists
+  # belongs_to :bucketlist
 end
