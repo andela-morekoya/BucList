@@ -12,10 +12,14 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161028142932) do
 =======
 ActiveRecord::Schema.define(version: 20161024114828) do
 >>>>>>> get model tests to pass
+=======
+ActiveRecord::Schema.define(version: 20161102141052) do
+>>>>>>> remove doorkeeper gem traces
 
   create_table "bucketlists", force: :cascade do |t|
     t.string   "name"
@@ -44,6 +48,7 @@ ActiveRecord::Schema.define(version: 20_161_024_114_828) do
     t.index ['bucketlist_id'], name: 'index_items_on_bucketlist_id'
   end
 
+<<<<<<< HEAD
   create_table 'oauth_access_grants', force: :cascade do |t|
     t.integer  'resource_owner_id', null: false
     t.integer  'application_id',    null: false
@@ -84,6 +89,8 @@ ActiveRecord::Schema.define(version: 20_161_024_114_828) do
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> remove doorkeeper gem traces
   create_table "tokens", force: :cascade do |t|
     t.string   "token"
     t.integer  "user_id"
