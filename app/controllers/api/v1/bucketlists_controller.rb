@@ -17,7 +17,7 @@ module Api
         if @bucketlist.save
           render json: @bucketlist, status: 201
         else
-          render json: @bucketlist.errors, status: 400
+          render json: @bucketlist, status: 400
         end
       end
 
@@ -25,7 +25,7 @@ module Api
         if @bucketlist.update(bucketlist_params)
           render json: @bucketlist, status: 200
         else
-          render json: @bucketlist.errors, status: 400
+          render json: @bucketlist, status: 400
         end
       end
 
