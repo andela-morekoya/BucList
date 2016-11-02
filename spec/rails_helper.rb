@@ -20,7 +20,11 @@ abort("The Rails environment is running in production mode!") \
 require 'spec_helper'
 require 'rspec/rails'
 
+<<<<<<< HEAD
 >>>>>>> write link model test
+=======
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+>>>>>>> convert controller specs to feature tests
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -54,7 +58,12 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+<<<<<<< HEAD
 >>>>>>> write link model test
+=======
+  config.include Requests::JsonHelpers, type: :request
+  
+>>>>>>> convert controller specs to feature tests
   Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

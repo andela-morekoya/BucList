@@ -16,25 +16,16 @@ module Api
 #   Module V1
     class Api::V1::BucketlistsController < ApplicationController
       # before_action :set_user
-      before_action :set_bucketlist, only: [:login, :show, :edit, :update, :destroy]
+      before_action :set_bucketlist, only: [:show, :edit, :update, :destroy]
 
       # GET /bucketlists
       def index
-        render json: Bucketlist.all
+        render json: Bucketlist.all, status: 200
       end
 
       # GET /bucketlist
       def show
-        render json: @bucketlist
-      end
-
-      # GET /bucketlists/new
-      def new
-        @bucketlist = Bucketlist.new
-      end
-
-      # GET /bucketlists/1/edit
-      def edit
+        render json: @bucketlist, status: 200
       end
 
       # POST /bucketlists
@@ -43,6 +34,7 @@ module Api
         @bucketlist = Bucketlist.new(bucketlist_params)
 
         if @bucketlist.save
+<<<<<<< HEAD
 <<<<<<< HEAD
           render json: @bucketlist, status: 201
         else
@@ -77,24 +69,27 @@ module Api
 end
 =======
           redirect_to @bucketlist, notice: 'Bucketlist was successfully created.'
+=======
+          render json: @bucketlist, status: 201
+>>>>>>> convert controller specs to feature tests
         else
-          render :new
+          render json: @bucketlist.errors, status: 400
         end
       end
 
       # PATCH/PUT /bucketlists/1
       def update
         if @bucketlist.update(bucketlist_params)
-          redirect_to @bucketlist, notice: 'Bucketlist was successfully updated.'
+          render json: @bucketlist, status: 200
         else
-          render :edit
+          render json: @bucketlist.errors, status: 400
         end
       end
 
       # DELETE /bucketlists/1
       def destroy
         @bucketlist.destroy
-        redirect_to bucketlists_url, notice: 'Bucketlist was successfully destroyed.'
+        head 204
       end
 
       private
@@ -110,5 +105,8 @@ end
     end
 #   end
 # end
+<<<<<<< HEAD
 
 >>>>>>> write test for BucketlistsController #show #index
+=======
+>>>>>>> convert controller specs to feature tests
