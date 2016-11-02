@@ -7,10 +7,13 @@ AllCops:
     - 'spec/spec_helper.rb'
     - 'config/**/*'
     - 'Rakefile'
+<<<<<<< HEAD
     - 'bin/*'
     - 'vendor/**/*'
     - 'app/assets/*'
     - 'public/*'
+=======
+>>>>>>> fix rubocop issues
 
 #################### Lint ################################
 

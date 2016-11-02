@@ -33,12 +33,17 @@ Rails.application.routes.draw do
 =======
 >>>>>>> write test for BucketlistsController #show #index
   namespace :api, defaults: { format: :json } do
+<<<<<<< HEAD
     scope module: :v1, 
                   constraints: ApiConstraints.new(version: 1, default: true) do
 <<<<<<< HEAD
       
 >>>>>>> setup doorkeeper
 =======
+=======
+    scope module: :v1,
+          constraints: ApiConstraints.new(version: 1, default: true) do
+>>>>>>> fix rubocop issues
       resources :users
 <<<<<<< HEAD
 >>>>>>> change user controller

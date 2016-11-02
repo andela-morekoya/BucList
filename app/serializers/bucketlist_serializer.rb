@@ -9,8 +9,12 @@ class BucketlistSerializer < ActiveModel::Serializer
   attribute :id
   attribute :name
   attribute :items do
+<<<<<<< HEAD
     for item in object.items
 >>>>>>> convert controller specs to feature tests
+=======
+    object.items.each do |item|
+>>>>>>> fix rubocop issues
       ItemSerializer.new(item).attributes
     end
   end

@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 abort('The Rails environment is running in production mode!') \
   if Rails.env.production?
 =======
@@ -16,6 +17,9 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 =======
 abort("The Rails environment is running in production mode!") \
+=======
+abort('The Rails environment is running in production mode!') \
+>>>>>>> fix rubocop issues
   if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
@@ -72,13 +76,21 @@ RSpec.configure do |config|
 >>>>>>> write link model test
 =======
   config.include Requests::JsonHelpers, type: :request
+<<<<<<< HEAD
   
 >>>>>>> convert controller specs to feature tests
+=======
+
+>>>>>>> fix rubocop issues
   Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
   end
 end
+<<<<<<< HEAD
 >>>>>>> setup doorkeeper
 end
+=======
+>>>>>>> fix rubocop issues

@@ -37,6 +37,7 @@ module Api
         redirect_to users_url, notice: 'User was successfully destroyed.'
       end
 
+<<<<<<< HEAD
   # GET /users/1/edit
   def edit
   end
@@ -78,4 +79,17 @@ module Api
       params.require(:user).permit(:email, :password_digest)
     end
 >>>>>>> change user controller
+=======
+      private
+
+      def set_user
+        @user = User.find(params[:id])
+      end
+
+      def user_params
+        params.require(:user).permit(:email, :password_digest)
+      end
+    end
+  end
+>>>>>>> fix rubocop issues
 end

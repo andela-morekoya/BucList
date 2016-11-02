@@ -3,9 +3,12 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> write link model test
+=======
+>>>>>>> fix rubocop issues
   describe "Validations" do
     subject { FactoryGirl.build(:user) }
 
@@ -18,6 +21,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
   end
 
+<<<<<<< HEAD
   # describe "Associations" do
   #   it { is_expected.to have_many(:bucketlists) }
   # end
@@ -28,4 +32,9 @@ RSpec.describe User, type: :model do
   
 >>>>>>> write link model test
 >>>>>>> write link model test
+=======
+  describe "Associations" do
+    it { is_expected.to have_many(:bucketlists) }
+  end
+>>>>>>> fix rubocop issues
 end

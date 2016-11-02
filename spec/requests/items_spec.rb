@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix rubocop issues
 RSpec.describe 'Items', type: :request do
   let(:header) do
     {
@@ -36,6 +39,9 @@ RSpec.describe "Items", type: :request do
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix rubocop issues
   describe 'POST /bucketlists/<id>/items' do
     context 'with valid parameters' do
       it 'creates an item in specified bucket list' do
@@ -66,6 +72,7 @@ RSpec.describe "Items", type: :request do
     it "creates an item in specified bucket list" do
       post api_bucketlist_items_path, name: 1ist.name
       expect(response).to have_http_status(200)
+<<<<<<< HEAD
     end
   end
 
@@ -80,6 +87,13 @@ RSpec.describe "Items", type: :request do
   end
 
 <<<<<<< HEAD
+=======
+      expect(response.body).to eq ActiveModelSerializers::SerializableResource
+        .new(item, {}).to_json
+    end
+  end
+
+>>>>>>> fix rubocop issues
   describe 'PUT /bucketlists/<id>/items/<id>' do
     context 'with valid parameters' do
       it 'updates a single item in specified bucket list' do

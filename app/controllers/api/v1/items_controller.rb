@@ -43,6 +43,7 @@ module Api
       def item_params
         params.require(:item).permit(:name, :done)
       end
+<<<<<<< HEAD
     end
   end
 =======
@@ -101,4 +102,8 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:name)
     end
 >>>>>>> write test for BucketlistsController #show #index
+=======
+    end
+  end
+>>>>>>> fix rubocop issues
 end
