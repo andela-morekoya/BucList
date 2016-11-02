@@ -2,10 +2,13 @@ source "https://rubygems.org"
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ruby '2.3.1'
 =======
 =======
 >>>>>>> fix rubocop issues
+=======
+>>>>>>> update gemfile
 ruby "2.3.1"
 <<<<<<< HEAD
 <<<<<<< HEAD
