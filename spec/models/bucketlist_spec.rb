@@ -11,10 +11,18 @@ RSpec.describe Bucketlist, type: :model do
   end
 
   describe "search" do
-    it "returns the list of bucketlists matching the query supplied" do
-      dream = FactoryGirl.create(:bucketlist, name: "My life dreams ")
+    let(:dream) { FactoryGirl.create(:bucketlist, name: "My life dreams") }
+    
+    context "when query is in bucketlist" do
+      it "returns the list of bucketlists matching the query supplied" do
+        expect(Bucketlist.search("dream")).to eq [dream]
+      end
+    end
 
-      expect(Bucketlist.search("dream")).to eq([dream])
+    context "when query is not in bucketlist" do
+      it "returns an empty array" do
+        expect(Bucketlist.search("hope")).to eq []
+      end
     end
   end
 end

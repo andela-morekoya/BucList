@@ -3,6 +3,7 @@ class Bucketlist < ApplicationRecord
   has_many :items
   validates :name, presence: true
 
-  scope :search, lambda { |query| where("lower(name) like ?", "%#{query.downcase}%") }
+  def self.search(query)
+    where("lower(name) like ?", "%#{query.downcase}%")
+  end
 end
-
