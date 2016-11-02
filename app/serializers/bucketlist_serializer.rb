@@ -2,7 +2,7 @@ class BucketlistSerializer < ActiveModel::Serializer
   attribute :id
   attribute :name
   attribute :items do
-    for item in object.items
+    object.items.each do |item|
       ItemSerializer.new(item).attributes
     end
   end

@@ -1,14 +1,14 @@
 Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (needs plugins)
   orm :active_record
-  access_token_generator "Doorkeeper::JWT"
+  access_token_generator 'Doorkeeper::JWT'
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    fail "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
+    raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
     # Put your resource owner authentication logic here.
     # Example implementation:
-      User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+    User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
@@ -137,12 +137,12 @@ Doorkeeper::JWT.configure do
   # that should be able to read the payload of the token.
   # Defaults to "secret"
   # secret_key "MY-SECRET"
-  secret_key "PI3E6ELGFZ"
+  secret_key 'PI3E6ELGFZ'
 
   # If you want to use RS* encoding specify the path to the RSA key
   # to use for signing.
   # If you specify a secret_key_path it will be used instead of secret_key
-  secret_key_path "path/to/file.pem"
+  secret_key_path 'path/to/file.pem'
 
   # Specify encryption type. Supports any algorithim in
   # https://github.com/progrium/ruby-jwt

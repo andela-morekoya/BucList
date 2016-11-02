@@ -4,6 +4,6 @@ class Bucketlist < ApplicationRecord
   validates :name, presence: true
 
   def self.search(query)
-    where("lower(name) like ?", "%#{query.downcase}%")
+    where('lower(name) like ?', "%#{query.downcase}%")
   end
 end
