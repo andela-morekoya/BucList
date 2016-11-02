@@ -1,17 +1,17 @@
-# Module Api
-#   Module V1
-    class Api::V1::BucketlistsController < ApplicationController
+Module Api
+  Module V1
+    class BucketlistsController < ApplicationController
       # before_action :set_user
-      before_action :set_bucketlist, only: [:show, :edit, :update, :destroy]
+      before_action :set_bucketlist, only: [:show, :update, :destroy]
 
       # GET /bucketlists
       def index
-        render json: Bucketlist.all, status: 200
+        render json: Bucketlist.all
       end
 
-      # GET /bucketlist
+      # GET /bucketlist/1
       def show
-        render json: @bucketlist, status: 200
+        render json: @bucketlist
       end
 
       # POST /bucketlists
@@ -19,25 +19,25 @@
         @bucketlist = Bucketlist.new(bucketlist_params)
 
         if @bucketlist.save
-          render json: @bucketlist, status: 201
+          render json: @bucketlist
         else
-          render json: @bucketlist.errors, status: 400
+          render :new
         end
       end
 
       # PATCH/PUT /bucketlists/1
       def update
         if @bucketlist.update(bucketlist_params)
-          render json: @bucketlist, status: 200
+          render json: @bucketlist
         else
-          render json: @bucketlist.errors, status: 400
+          render :edit
         end
       end
 
       # DELETE /bucketlists/1
       def destroy
         @bucketlist.destroy
-        head 204
+        render json: 'Bucketlist was successfully destroyed.'
       end
 
       private
@@ -51,5 +51,6 @@
           params.require(:bucketlist).permit(:name)
         end
     end
-#   end
-# end
+  end
+end
+
