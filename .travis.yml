@@ -1,5 +1,8 @@
 language: ruby
 rvm:
   - 2.3.1
-script:
-  - rails db:migrate RAILS_ENV=test
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+script: 
+  - bundle exec rspec spec/
