@@ -41,12 +41,14 @@ class User < ApplicationRecord
 =======
   has_one :token
 
-  def generate_token
-    payload = { user: { id: id, email: email } }
-    user_token = JsonWebToken.encode(payload)
-    self.create_token(user_id: id, 
-                      token: user_token, 
-                      expires_at: 2.hours.from_now)
+  def generate_token             
+    unless self.try(:token).try(:is_valid)
+      payload = { user: { id: id, email: email } }
+      user_token = JsonWebToken.encode(payload)
+      self.create_token(user_id: id, 
+                        token: user_token, 
+                        expires_at: 2.hours.from_now)
+    end
   end
 >>>>>>> commit changes in preparation for cherry picking
 end

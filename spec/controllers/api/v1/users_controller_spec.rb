@@ -8,7 +8,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     }
   end
 
-  before { request.headers = header }
+  # before { request.headers = header }
 
   describe "#show" do
     let(:user) { FactoryGirl.create :user }
