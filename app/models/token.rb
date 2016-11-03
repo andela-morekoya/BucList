@@ -6,4 +6,9 @@ class Token < ApplicationRecord
   def is_valid
     Time.now < self.expires_at
   end
+
+  def self.get_user_id(token)
+    result = find_by_token(token)
+    result.user_id if result
+  end
 end

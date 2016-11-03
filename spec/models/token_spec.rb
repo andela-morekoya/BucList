@@ -10,11 +10,10 @@ RSpec.describe Token, type: :model do
     it { is_expected.to validate_uniqueness_of :token }
   end
 
+  let!(:user) { FactoryGirl.create(:user) }
+  before { user.generate_token }
+
   describe "#is_valid" do
-    let!(:user) { FactoryGirl.create(:user) }
-
-    before { user.generate_token }
-
     subject { user.token.is_valid  }
 
     context "when token is has not expired" do
@@ -32,21 +31,15 @@ RSpec.describe Token, type: :model do
     end
   end
 
-  describe "#is_valid" do
-    let(:user) { FactoryGirl.create(:user) }
+  describe "get_user_id" do
+    context "when given a token" do
+      it "returns the user id of the token" do
+        token = user.token.token
+        
+        result = Token.get_user_id(token)
 
-    before do
-      user.generate_token
-    end
-
-    it "checks that a token is still valid" do
-      expect(user.token.is_valid).to be true
-    end
-
-    it "returns false when token is expired" do
-      user.token.update(expires_at: 3.hours.ago)
-      
-      expect(user.token.is_valid).to be false
+        expect(result).to eq user.id
+      end
     end
   end
 end

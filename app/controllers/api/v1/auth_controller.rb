@@ -1,6 +1,7 @@
 module Api
   module V1
     class AuthController < ApplicationController
+      before_action :authenticate_with_token, only: [:logout]
       def login
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])

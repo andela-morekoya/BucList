@@ -2,6 +2,7 @@ module Api
   module V1
     class ItemsController < ApplicationController
       before_action :set_item, only: [:show, :edit, :update, :destroy]
+      before_action :authenticate_with_token
 
       def index
         render json: Item.all, status: 200

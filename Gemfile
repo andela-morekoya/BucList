@@ -48,6 +48,7 @@ gem 'coveralls', require: false
 >>>>>>> add coveralls
 gem 'active_model_serializers'
 gem 'jwt'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -76,7 +77,11 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'
+<<<<<<< HEAD
 >>>>>>> fix rubocop issues
+=======
+  gem "codeclimate-test-reporter", require: nil
+>>>>>>> implement authentication in progress
 end
 
 group :development do

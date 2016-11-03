@@ -2,6 +2,7 @@ module Api
   module V1
     class BucketlistsController < ApplicationController
       before_action :set_bucketlist, only: [:show, :edit, :update, :destroy]
+      before_action :authenticate_with_token
 
       def index
         render json: Bucketlist.all, status: 200
