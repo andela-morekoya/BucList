@@ -13,8 +13,7 @@ module Api
       end
 
       def logout
-        user = User.find_by(Token.find_by_token("PUT_SOMETHING").user_id)
-        user.token.destroy
+        Token.find_by_token(request.headers['Authorization']).destroy
         head 204
       end
     end

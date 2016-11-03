@@ -5,12 +5,10 @@ RSpec.describe Api::V1::AuthController, type: :controller do
 
   let(:header) do
     {
-      'ACCEPT' => 'application/vnd.secchio.v1',
+      'ACCEPT' => 'application/vnd.buclist.v1',
       'CONTENT-TYPE' => 'application/json'
     }
   end
-
-  # before { request.headers = header }
 
   describe "#login" do
     context "with correct login details" do

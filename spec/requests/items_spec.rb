@@ -7,7 +7,7 @@ require 'rails_helper'
 RSpec.describe 'Items', type: :request do
   let(:header) do
     {
-      'ACCEPT' => 'application/vnd.secchio.v1',
+      'ACCEPT' => 'application/vnd.buclist.v1',
       'CONTENT-TYPE' => 'application/json'
     }
   end

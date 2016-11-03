@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        render json: @bucketlist, status: 200
+        render json: @bucketlist, status: 200 
       end
 
 =======
@@ -33,7 +33,6 @@ module Api
 >>>>>>> write test for BucketlistsController #show #index
       def create
         @bucketlist = Bucketlist.new(bucketlist_params)
-        
         if @bucketlist.save
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -63,7 +62,7 @@ module Api
       end
 
       def bucketlist_params
-        params.require(:bucketlist).permit(:name)
+        params.require(:bucketlist).permit(:name, user: current_user)
       end
     end
   end

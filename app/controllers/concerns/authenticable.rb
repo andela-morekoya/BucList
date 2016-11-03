@@ -1,12 +1,13 @@
 module Authenticable
   def current_user
-    @current_user ||= User.find_by(auth_token[:user][:user_id])
+    # debugger
+    @current_user ||= User.find_by(id: auth_token[:user][:id])
+  # rescue JWT::VerificationError, JWT::DecodeError
+  #   render json: { error: "Invalid Session" }, status: 403
   end
 
   def authenticate_with_token
-    return render json: { error: "Invalid Session" }, status: 403 unless 
-          current_user.present? && @current_user.token.is_valid
-    return render json: { error: "Not authenticated" },
+    render json: { error: "Not authenticated" },
            status: :unauthorized unless current_user.present?
   end
 
@@ -17,6 +18,12 @@ module Authenticable
   def http_header_token
     request.headers['Authorization'] if 
       request.headers['Authorization'].present?
+    # http_token = Token.find_by_token(request.headers['Authorization'])
+    # if http_token && http_token.is_valid
+    #   http_token
+    # else
+    #   return render json: { error: "Invalid Session" }, status: 403
+    # end
   end
 
 end

@@ -8,6 +8,7 @@ class ApiConstraints
 <<<<<<< HEAD
 <<<<<<< HEAD
     @default || client_request.headers['Accept']
+<<<<<<< HEAD
       .include?('application/vnd.secchio.v%{@version}')
 =======
     @default || client_request.headers["Accept"].include?("application/vnd.secchio.v%{@version}")
@@ -16,5 +17,8 @@ class ApiConstraints
     @default || client_request.headers['Accept']
       .include?('application/vnd.secchio.v%{@version}')
 >>>>>>> fix rubocop issues
+=======
+      .include?('application/vnd.buclist.v%{@version}')
+>>>>>>> fix authentication
   end
 end
