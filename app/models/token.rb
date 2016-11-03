@@ -3,6 +3,6 @@ class Token < ApplicationRecord
   validates :token, presence: true, uniqueness: true
 
   def is_valid
-    Time.now > expires_at
+    Time.now < self.expires_at
   end
 end

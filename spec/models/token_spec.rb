@@ -35,8 +35,9 @@ RSpec.describe Token, type: :model do
   describe "#is_valid" do
     it "checks that a token is still valid" do
       user = FactoryGirl.create(:user)
-      user.token.generate()
-      expect(user.token).to be true
+      user.generate_token
+      
+      expect(user.token.is_valid).to be true
     end
   end
 end

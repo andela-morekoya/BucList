@@ -1,3 +1,5 @@
+require 'json_web_token'
+
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
@@ -40,7 +42,11 @@ class User < ApplicationRecord
   has_one :token
 
   def generate_token
-    # 3
+    payload = { user: { id: id, email: email } }
+    user_token = JsonWebToken.encode(payload)
+    self.create_token(user_id: id, 
+                      token: user_token, 
+                      expires_at: 2.hours.from_now)
   end
 >>>>>>> commit changes in preparation for cherry picking
 end
