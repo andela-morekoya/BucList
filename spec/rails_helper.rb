@@ -12,6 +12,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'coveralls'
 Coveralls.wear!('rails')
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -77,9 +79,13 @@ RSpec.configure do |config|
 =======
   config.include Requests::JsonHelpers, type: :request
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 >>>>>>> convert controller specs to feature tests
 =======
+=======
+  config.include Requests::JsonHelpers, type: :controller
+>>>>>>> refactor tests
 
 >>>>>>> fix rubocop issues
   Shoulda::Matchers.configure do |config|
