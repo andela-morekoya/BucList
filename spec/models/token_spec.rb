@@ -7,7 +7,7 @@ RSpec.describe Token, type: :model do
 
   describe "Validations" do
     it { is_expected.to validate_presence_of :token }
-    it { is_expected.to have_uniqueness }
+    it { is_expected.to validate_uniqueness_of :token }
   end
 
   describe "#is_valid" do
@@ -15,7 +15,7 @@ RSpec.describe Token, type: :model do
 
     before { user.generate_token }
 
-    subject { user.token.is_valid? }
+    subject { user.token.is_valid  }
 
     context "when token is has not expired" do
       it "returns a true value" do

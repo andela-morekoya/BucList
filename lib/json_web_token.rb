@@ -11,10 +11,10 @@ class JsonWebToken
     nil
   end
 
-  protected
+  private
 
-  # def secret_key
-  #   ENV["TOKEN_SECRET_KEY"]
-  # end
+  def secret_key
+    ENV["TOKEN_SECRET_KEY"]
+  end
 end
 

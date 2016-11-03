@@ -38,6 +38,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_one(:token) }
   end
 
+<<<<<<< HEAD
   describe ".generate_token" do
     let (:user) { FactoryGirl.create(:user) }
 
@@ -70,6 +71,8 @@ RSpec.describe User, type: :model do
 >>>>>>> fix rubocop issues
 =======
 
+=======
+>>>>>>> implement jwt
   describe "#generate_token" do
     it "generates a authentication token" do
       user = FactoryGirl.create(:user)
