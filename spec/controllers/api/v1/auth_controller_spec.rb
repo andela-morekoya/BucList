@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Api::V1::SessionsController, type: :controller do
+RSpec.describe Api::V1::AuthController, type: :controller do
   let(:user) { FactoryGirl.create(:user, password: "correct") }
 
   let(:header) do
@@ -23,32 +23,23 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
     end
 
     context "with incorrect login details" do
-      it "lets user know that login faild" do
+      it "lets user know that login failed" do
         credentials = { email: user.email, password: "wrong" }
         process :login, method: :post, params: { auth: credentials }
 
-        expect(json).to eq "new"
+        expect(json[:error]).to eq "Login failed"
       end
     end
   end
 
   describe "#logout" do
-    context "with invalid details" do
-      xit "should reject login" do
-        post :create, auth: { email: user.email, password: "wrong" }
+    it "should delete the user's token" do
+      credentials = { email: user.email, password: "correct" }
+      process :login, method: :post, params: { auth: credentials }
 
-        expect(flash[:alert]).to eq "Invalid email or password"
-        expect(response).to redirect_to login_path
-      end
-    end
-
-    context "with valid details" do
-      xit "should reject login" do
-        post :create, session: { email: user.email, password: "wrong" }
-
-        expect(flash[:alert]).to eq "Invalid email or password"
-        expect(response).to redirect_to login_path
-      end
+      process :logout, method: :destroy, params: { auth: credentials }
+      expect(user.token).to be_nil
+      expecr(response).to have_http_status 204
     end
   end
 end
