@@ -32,7 +32,7 @@ module Api
 >>>>>>> write test for BucketlistsController #show #index
       def create
         @bucketlist = Bucketlist.new(bucketlist_params)
-
+        
         if @bucketlist.save
 <<<<<<< HEAD
 <<<<<<< HEAD

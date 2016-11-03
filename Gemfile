@@ -47,6 +47,7 @@ gem 'jquery-rails'
 gem 'coveralls', require: false
 >>>>>>> add coveralls
 gem 'active_model_serializers'
+gem 'jwt'
 
 group :development, :test do
   gem 'byebug', platform: :mri

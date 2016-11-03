@@ -1,7 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::UsersController, type: :controller do
-  before { request.headers['Accept'] = "application/vnd.secchio.v1" }
+  let(:header) do
+    {
+      'ACCEPT' => 'application/vnd.secchio.v1',
+      'CONTENT-TYPE' => 'application/json'
+    }
+  end
+
+  before { request.headers = header }
 
   describe "#show" do
     let(:user) { FactoryGirl.create :user }

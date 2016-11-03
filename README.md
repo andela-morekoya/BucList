@@ -23,7 +23,7 @@ All our dependencies can be found in our Gemfile. To see a list of all our depen
 ###Available End Points
 |         End Point                               |Function           |
 |-------------------------------------------------|-------------------|
-|POST /api/users                                  |Create a new user       |
+|POST /users                                      |Create a new user       |
 |POST /auth/login                                 |Logs in a user          |
 |DELETE /auth/logout                              |Logs out a user         |
 |POST /bucketlists                                |Creates a new bucket list   |

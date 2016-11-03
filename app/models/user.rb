@@ -34,5 +34,13 @@ class User < ApplicationRecord
 =======
 >>>>>>> setup serializers
   has_many :bucketlists
+<<<<<<< HEAD
 >>>>>>> add destroy depndency
+=======
+  has_one :token
+
+  def generate_token
+    #
+  end
+>>>>>>> commit changes in preparation for cherry picking
 end

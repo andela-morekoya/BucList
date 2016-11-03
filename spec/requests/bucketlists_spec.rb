@@ -44,7 +44,7 @@ RSpec.describe "Bucketlists", type: :request do
         post api_bucketlists_path,
              params: '{ "bucketlist": { "name": "New List" } }',
              headers: header
-
+        
         expect(response).to have_http_status(201)
         expect(json[:name]).to eq 'New List'
       end
@@ -117,7 +117,6 @@ RSpec.describe "Bucketlists", type: :request do
     it 'gets a single bucket list' do
 >>>>>>> fix rubocop issues
       get "/api/bucketlists/#{list.id}", headers: header
-      # get api_bucketlist_path, params: '{ "id": 1 }', headers: header
       expect(response).to have_http_status(200)
     end
   end
