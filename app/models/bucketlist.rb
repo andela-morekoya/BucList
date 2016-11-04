@@ -22,7 +22,7 @@ class Bucketlist < ApplicationRecord
     end
   end
 
-  def get_list_limit(query)
+  def self.get_list_limit(query)
     max_limit = 100
     (20 unless query[:limit]) || (max_limit if query[:limit] > max_limit) \
       || query[:limit]
