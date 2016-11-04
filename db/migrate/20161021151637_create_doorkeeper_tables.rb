@@ -39,28 +39,12 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       # https://github.com/doorkeeper-gem/doorkeeper/tree/v3.0.0.rc1#custom-access-token-generator
       #
       # t.text     :token,             null: false
-<<<<<<< HEAD
-<<<<<<< HEAD
       t.string   :token, null: false
-=======
-      t.string   :token,                  null: false
->>>>>>> get model tests to pass
-=======
-      t.string   :token, null: false
->>>>>>> fix rubocop issues
 
       t.string   :refresh_token
       t.integer  :expires_in
       t.datetime :revoked_at
-<<<<<<< HEAD
-<<<<<<< HEAD
       t.datetime :created_at, null: false
-=======
-      t.datetime :created_at,             null: false
->>>>>>> get model tests to pass
-=======
-      t.datetime :created_at, null: false
->>>>>>> fix rubocop issues
       t.string   :scopes
 
       # If there is a previous_refresh_token column,
@@ -69,15 +53,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       # previous tokens are revoked as soon as a new access token is created.
       # Comment out this line if you'd rather have refresh tokens
       # instantly revoked.
-<<<<<<< HEAD
-<<<<<<< HEAD
       t.string   :previous_refresh_token, null: false, default: ''
-=======
-      t.string   :previous_refresh_token, null: false, default: ""
->>>>>>> get model tests to pass
-=======
-      t.string   :previous_refresh_token, null: false, default: ''
->>>>>>> fix rubocop issues
     end
 
     add_index :oauth_access_tokens, :token, unique: true

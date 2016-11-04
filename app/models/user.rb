@@ -7,42 +7,10 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX }
-<<<<<<< HEAD
-<<<<<<< HEAD
-  validates :password, length: { minimum: 6 }
-<<<<<<< HEAD
-  has_secure_password
-  has_many :bucketlists
-=======
-=======
-  # validates :password, length: { minimum: 6 }
->>>>>>> write code for user#update
-
-  has_secure_password
->>>>>>> get model tests to pass
-=======
   validates :password, length: { minimum: 6 }, on: :create
-<<<<<<< HEAD
-<<<<<<< HEAD
 
->>>>>>> refactor code for user#update
-=======
-  
-=======
-
->>>>>>> finish authentication implemantation
   has_secure_password
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> create bucketlist models
-=======
-
-=======
->>>>>>> setup serializers
   has_many :bucketlists
-<<<<<<< HEAD
->>>>>>> add destroy depndency
-=======
   has_one :token
 
   def generate_token
@@ -54,5 +22,4 @@ class User < ApplicationRecord
                  token: user_token,
                  expires_at: 2.hours.from_now)
   end
->>>>>>> commit changes in preparation for cherry picking
 end
