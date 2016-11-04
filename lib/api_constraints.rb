@@ -6,6 +6,6 @@ class ApiConstraints
 
   def matches?(client_request)
     @default || client_request.headers['Accept']
-      .include?('application/vnd.secchio.v%{@version}')
+      .include?('application/vnd.buclist.v%{@version}')
   end
 end

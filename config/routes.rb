@@ -1,9 +1,13 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  root "home#index"
+
   namespace :api, defaults: { format: :json } do
     scope module: :v1,
           constraints: ApiConstraints.new(version: 1, default: true) do
+      post "/auth/login"    => "auth#login"
+      delete "/auth/logout"    => "auth#logout"
       resources :users
       resources :bucketlists do
         resources :items

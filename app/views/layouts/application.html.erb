@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Buclist</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Buclist | Bucketlist API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Raleway:900", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+</head>
+<body>
+  <% #= select_nav %>
+  <%= render "layouts/nav" unless current_user %>
+  
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= value %>
+    </div> 
+  <% end %>
+  <div class="main">
     <%= yield %>
-  </body>
+  </div>
+
+  <%= render "layouts/footer" %>
+
+</body>
 </html>

@@ -1,11 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :set_user, only: [:login, :show, :edit, :update, :destroy]
-
-      def login
-        session[:user_id] = @user.id
-      end
+      before_action :set_user, only: [:show, :edit, :update, :destroy]
 
       def new
         @user = User.new
