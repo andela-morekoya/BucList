@@ -28,7 +28,7 @@ RSpec.describe 'Bucketlists', type: :request do
       context 'with valid params' do
         it 'creates a new bucket list' do
           post api_bucketlists_path,
-               params: '{ "bucketlist": { "name": "New List" } }',
+               params: ' { "name": "New List" }',
                headers: header
 
           expect(response).to have_http_status(:created)
@@ -39,7 +39,7 @@ RSpec.describe 'Bucketlists', type: :request do
       context 'with invalid params' do
         it 'returns status code :bad_request' do
           post api_bucketlists_path,
-               params: '{ "bucketlist": { "name": "" } }',
+               params: '{ "name": "" }',
                headers: header
 
           expect(response).to have_http_status(:bad_request)
@@ -60,7 +60,7 @@ RSpec.describe 'Bucketlists', type: :request do
         context 'with valid params' do
           it 'updates the specified bucket list' do
             patch "/api/bucketlists/#{list.id}",
-                  params: '{ "bucketlist": { "name": "Changed List" } }',
+                  params: '{ "name": "Changed List" }',
                   headers: header
 
             expect(response).to have_http_status(:ok)
@@ -71,7 +71,7 @@ RSpec.describe 'Bucketlists', type: :request do
         context 'with invalid params' do
           it 'returns status code :bad_request' do
             patch "/api/bucketlists/#{list.id}",
-                  params: '{ "bucketlist": { "name": "" } }',
+                  params: '{ "name": "" }',
                   headers: header
 
             expect(response).to have_http_status(:bad_request)
@@ -83,7 +83,7 @@ RSpec.describe 'Bucketlists', type: :request do
         it 'returns forbidden status' do
           other_user_list = FactoryGirl.create(:bucketlist)
           patch "/api/bucketlists/#{other_user_list.id}",
-                params: '{ "bucketlist": { "name": "Changed List" } }',
+                params: '{ "name": "Changed List" }',
                 headers: header
 
           expect(response).to have_http_status(:forbidden)
@@ -134,7 +134,7 @@ RSpec.describe 'Bucketlists', type: :request do
     describe 'POST /bucketlists' do
       it 'returns an unauthorized status' do
         post api_bucketlists_path,
-             params: '{ "bucketlist": { "name": "New List" } }',
+             params: '{ "name": "New List" }',
              headers: unauthorised_header
 
         expect(response).to have_http_status(:unauthorized)
@@ -152,7 +152,7 @@ RSpec.describe 'Bucketlists', type: :request do
     describe 'PUT /bucketlists/<id>' do
       it 'returns an unauthorized status' do
         patch "/api/bucketlists/#{list.id}",
-              params: '{ "bucketlist": { "name": "Changed List" } }',
+              params: '{ "name": "Changed List" }',
               headers: unauthorised_header
 
         expect(response).to have_http_status(:unauthorized)
