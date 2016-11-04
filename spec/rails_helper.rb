@@ -87,7 +87,25 @@ RSpec.configure do |config|
   config.include Requests::JsonHelpers, type: :controller
 >>>>>>> refactor tests
 
+<<<<<<< HEAD
 >>>>>>> fix rubocop issues
+=======
+  RSpec.configure do |config|
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+end
+
+>>>>>>> finish authentication implemantation
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
       with.test_framework :rspec

@@ -23,7 +23,11 @@ FactoryGirl.define do
 >>>>>>> create bucketlist models
 =======
     email { Faker::Internet.email }
+<<<<<<< HEAD
     password { Faker::Internet.password }
 >>>>>>> add destroy depndency
+=======
+    password 'correct'
+>>>>>>> finish authentication implemantation
   end
 end

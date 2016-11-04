@@ -3,6 +3,7 @@ source "https://rubygems.org"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ruby '2.3.1'
 =======
 =======
@@ -17,12 +18,15 @@ ruby "2.3.1"
 <<<<<<< HEAD
 >>>>>>> add travis
 =======
+=======
+ruby '2.3.1'
+>>>>>>> finish authentication implemantation
 
 >>>>>>> add coveralls
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'puma', '~> 3.0'
 gem 'jquery-rails'
-gem "bootstrap-sass", "~> 3.3.6"
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -78,10 +82,14 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> fix rubocop issues
 =======
   gem "codeclimate-test-reporter", require: nil
 >>>>>>> implement authentication in progress
+=======
+  gem 'codeclimate-test-reporter', require: nil
+>>>>>>> finish authentication implemantation
 end
 
 group :development do

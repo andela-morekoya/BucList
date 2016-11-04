@@ -38,7 +38,7 @@
 
 #     context "with invalid params" do
 #       it "renders error saying why resource could not created" do
-#         process :create, method: :post,  params: { user: { email: "invalid" } }
+#         process :create, method: :post,  params: { user: { email: "invalid"}}
 
 #         user_response = JSON.parse(response.body)
 
@@ -55,7 +55,7 @@
 #       it "renders the details of resource updated" do
 #         new_email = "abc@valid.com"
 
-#         process :update, method: :patch, 
+#         process :update, method: :patch,
 #                          params: { id: user.id, user: { email: new_email} }
 
 #         user_response = JSON.parse(response.body)
@@ -67,7 +67,7 @@
 #       it "renders error saying why resource could not updated" do
 #         new_email = "abc@invalid"
 
-#         process :update, method: :patch, 
+#         process :update, method: :patch,
 #                          params: { id: user.id, user: { email: new_email } }
 
 #         user_response = JSON.parse(response.body)
@@ -77,14 +77,13 @@
 #     end
 #   end
 
-
 #   describe "#delete" do
 #     it "deletes the specified user" do
 #       user = FactoryGirl.create(:user)
-      
+
 #       process :destroy, method: :delete, params: { id: user.id }
 
 #       expect(User.find_by(id: user.id)).to be_nil
 #     end
 #   end
-# end 
+# end

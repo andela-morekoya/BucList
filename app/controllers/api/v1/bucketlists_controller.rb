@@ -5,11 +5,11 @@ module Api
       before_action :authenticate_with_token
 
       def index
-        render json: Bucketlist.all, status: 200
+        render json: Bucketlist.all, status: :ok
       end
 
       def show
-        render json: @bucketlist, status: 200 
+        render json: @bucketlist, status: :ok
       end
 
 =======
@@ -32,27 +32,39 @@ module Api
       # POST /bucketlists
 >>>>>>> write test for BucketlistsController #show #index
       def create
-        @bucketlist = Bucketlist.new(bucketlist_params)
+        @bucketlist = current_user.bucketlists.build(bucketlist_params)
         if @bucketlist.save
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           render json: @bucketlist, status: 201
+=======
+          render json: @bucketlist, status: :created
+>>>>>>> finish authentication implemantation
         else
-          render json: @bucketlist, status: 400
+          render json: @bucketlist, status: :bad_request
         end
       end
 
       def update
-        if @bucketlist.update(bucketlist_params)
-          render json: @bucketlist, status: 200
+        if @bucketlist.user_id == current_user.id
+          if @bucketlist.update(bucketlist_params)
+            render json: @bucketlist, status: :ok
+          else
+            render json: @bucketlist, status: :bad_request
+          end
         else
-          render json: @bucketlist, status: 400
+          render json: @bucketlist, status: :forbidden
         end
       end
 
       def destroy
-        @bucketlist.destroy
-        head 204
+        if @bucketlist.user_id == current_user.id
+          @bucketlist.destroy
+          head 204
+        else
+          render json: @bucketlist, status: :forbidden
+        end
       end
 
       private

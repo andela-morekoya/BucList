@@ -1,12 +1,13 @@
 class UserSerializer < ActiveModel::Serializer
+<<<<<<< HEAD
   # attributes :id, :email, :password_digest
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> setup serializers
+=======
+>>>>>>> finish authentication implemantation
   attributes :email
-
-  has_many :bucketlists
   has_one :token
 <<<<<<< HEAD
 =======

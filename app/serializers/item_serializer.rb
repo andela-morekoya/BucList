@@ -9,6 +9,7 @@ class ItemSerializer < ActiveModel::Serializer
   attribute :updated_at, key: :date_modified
   attribute :done
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   # belongs_to :bucketlist
 =======
@@ -19,4 +20,6 @@ class ItemSerializer < ActiveModel::Serializer
 
   belongs_to :bucketlists
 >>>>>>> setup serializers
+=======
+>>>>>>> finish authentication implemantation
 end

@@ -9,26 +9,37 @@ RSpec.describe Authenticable do
   let(:user) { FactoryGirl.create :user }
   subject { authentication }
 
-  describe "#current_user" do
-    before do
-      user.generate_token
-      allow_any_instance_of(Authentication).to receive(:current_user)
-      .and_return(user)
-    end
+  context 'When user has a valid token'
+  before do
+    user.generate_token
+    allow_any_instance_of(Authentication).to receive(:http_header_token)
+      .and_return(user.token.token)
+  end
 
-    it "returns the user from the authorization header" do
+  describe '#current_user' do
+    it 'returns the user from the authorization header' do
       expect(authentication.current_user.token).to eql user.token
     end
   end
 
-  describe "#authenticate_with_token" do
-    before do
-      allow_any_instance_of(Authentication).to receive(:current_user)
-      .and_return(nil)
-    end
-    it "renders a json error message" do
+  describe '#authenticate_with_token' do
+    it 'ensures token has a user' do
       authentication.authenticate_with_token
-      expect(json[:error]).to eq "Not authenticated"
+      expect(authentication.current_user).to be_present
+    end
+  end
+
+  describe '#auth_token' do
+    it 'gets the decoded token' do
+      result = authentication.auth_token
+      expect(result[:user]).to be_present
+    end
+  end
+
+  describe '#http_header_token' do
+    it ' returns a valid token' do
+      result = authentication.http_header_token
+      expect(result).to eq user.token.token
     end
   end
 end

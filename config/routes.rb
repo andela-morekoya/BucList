@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 =======
 =======
   root "home#index"
+<<<<<<< HEAD
 >>>>>>> implement versioning
   get "/login"     => "sessions#new"
   post "/login"    => "sessions#create"
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   # get "/signup"    => "users#new"
   # post "/users"    => "users#create"
   # resources :users
+=======
+>>>>>>> finish authentication implemantation
 
 <<<<<<< HEAD
 >>>>>>> get model tests to pass
@@ -45,7 +48,12 @@ Rails.application.routes.draw do
 =======
     scope module: :v1,
           constraints: ApiConstraints.new(version: 1, default: true) do
+<<<<<<< HEAD
 >>>>>>> fix rubocop issues
+=======
+      post "/auth/login"    => "auth#login"
+      delete "/auth/logout"    => "auth#logout"
+>>>>>>> finish authentication implemantation
       resources :users
 <<<<<<< HEAD
 >>>>>>> change user controller

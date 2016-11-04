@@ -4,23 +4,28 @@ RSpec.describe User, type: :model do
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> write link model test
 =======
 >>>>>>> fix rubocop issues
   describe "Validations" do
+=======
+  describe 'Validations' do
+>>>>>>> finish authentication implemantation
     subject { FactoryGirl.build(:user) }
 
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
-    it { is_expected.to allow_value("email@valid.com").for(:email) }
-    it { is_expected.to_not allow_value("email@invalid").for(:email) }
+    it { is_expected.to allow_value('email@valid.com').for(:email) }
+    it { is_expected.to_not allow_value('email@invalid').for(:email) }
 
     it { is_expected.to have_secure_password }
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
   end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   # describe "Associations" do
   #   it { is_expected.to have_many(:bucketlists) }
@@ -34,10 +39,14 @@ RSpec.describe User, type: :model do
 >>>>>>> write link model test
 =======
   describe "Associations" do
+=======
+  describe 'Associations' do
+>>>>>>> finish authentication implemantation
     it { is_expected.to have_many(:bucketlists) }
     it { is_expected.to have_one(:token) }
   end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   describe ".generate_token" do
     let (:user) { FactoryGirl.create(:user) }
@@ -75,8 +84,12 @@ RSpec.describe User, type: :model do
 >>>>>>> implement jwt
   describe "#generate_token" do
     it "generates a authentication token" do
+=======
+  describe '#generate_token' do
+    it 'generates a authentication token' do
+>>>>>>> finish authentication implemantation
       user = FactoryGirl.create(:user)
-      user.generate_token()
+      user.generate_token
       expect(user.token).to_not be_nil
     end
   end

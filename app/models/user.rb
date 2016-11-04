@@ -23,10 +23,14 @@ class User < ApplicationRecord
 =======
   validates :password, length: { minimum: 6 }, on: :create
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 >>>>>>> refactor code for user#update
 =======
   
+=======
+
+>>>>>>> finish authentication implemantation
   has_secure_password
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -41,14 +45,14 @@ class User < ApplicationRecord
 =======
   has_one :token
 
-  def generate_token             
-    unless self.try(:token).try(:is_valid)
-      payload = { user: { id: id, email: email } }
-      user_token = JsonWebToken.encode(payload)
-      self.create_token(user_id: id, 
-                        token: user_token, 
-                        expires_at: 2.hours.from_now)
-    end
+  def generate_token
+    return nil unless token.blank? || token.expired?
+
+    payload = { user: { id: id, email: email } }
+    user_token = JsonWebToken.encode(payload)
+    create_token(user_id: id,
+                 token: user_token,
+                 expires_at: 2.hours.from_now)
   end
 >>>>>>> commit changes in preparation for cherry picking
 end
