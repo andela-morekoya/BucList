@@ -25,4 +25,17 @@ RSpec.describe Bucketlist, type: :model do
       end
     end
   end
+
+  describe 'search_and_paginate' do
+    before { 25.times { FactoryGirl.create(:bucketlist) } }
+
+    context 'when paginate is specified without limit' do
+      it 'lists the first 20 results' do
+        result = Bucketlist.search_and_paginate()
+
+        expect(result.first[:name]).to eq Bucketlist.first.name
+        expect(result).to_not include Bucketlist.last.name
+      end
+    end 
+  end
 end

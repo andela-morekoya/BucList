@@ -5,7 +5,8 @@ module Api
       before_action :authenticate_with_token
 
       def index
-        render json: Bucketlist.all, status: :ok
+        @bucketlists = Bucketlist.search_and_paginate(params)
+        render json: @bucketlists, status: :ok
       end
 
       def show
@@ -14,6 +15,7 @@ module Api
 
       def create
         @bucketlist = current_user.bucketlists.build(bucketlist_params)
+
         if @bucketlist.save
           render json: @bucketlist, status: :created
         else
@@ -49,7 +51,7 @@ module Api
       end
 
       def bucketlist_params
-        params.require(:bucketlist).permit(:name, user: current_user)
+        params.permit(:name)
       end
     end
   end
