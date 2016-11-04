@@ -3,6 +3,7 @@ rvm:
   - 2.3.1
 script: 
   - bundle exec rails db:setup RAILS_ENV=test
+  - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec spec/
 cache: bundler
 addons:
