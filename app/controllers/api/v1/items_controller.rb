@@ -1,8 +1,10 @@
 module Api
   module V1
     class ItemsController < ApplicationController
+      include Messages
+      before_action :authenticate_request
       before_action :set_item, only: [:show, :edit, :update, :destroy]
-      before_action :authenticate_with_token
+      before_action :set_bucketlist, only: [:create]
 
       def index
         render json: Item.all, status: :ok
@@ -13,13 +15,12 @@ module Api
       end
 
       def create
-        set_bucketlist
         @item = @bucketlist.items.build(item_params)
 
         if @item.save
           render json: @item, status: :created
         else
-          render json: @item, status: :bad_request
+          render json: { error: not_created('Item') }, status: :bad_request
         end
       end
 
@@ -27,7 +28,7 @@ module Api
         if @item.update(item_params)
           render json: @item, status: :ok
         else
-          render json: @item, status: :bad_request
+          render json: { error: not_updated('Item') }, status: :bad_request
         end
       end
 
@@ -47,7 +48,7 @@ module Api
       end
 
       def item_params
-        params.require(:item).permit(:name, :done)
+        params.permit(:name, :done)
       end
     end
   end

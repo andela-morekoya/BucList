@@ -1,30 +1,31 @@
 class Bucketlist < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  has_many :items
+  belongs_to :user
+  has_many :items, dependent: :destroy
   validates :name, presence: true
 
   scope :search, ->(query) do
     where('lower(name) like ?', "%#{query.downcase}%")
   end
 
-  scope :paginate, ->(list_limit, page) do
-    limit(list_limit).offset("#{(page - 1) * list_limit}".to_i)
+  scope :paginate, ->(result_size, page) do
+    limit(result_size.abs).offset((page - 1).abs * result_size)
   end
 
   def self.search_and_paginate(query = {})
-    list_limit = get_list_limit(query)
+    result_size = get_result_size(query)
+
     page = query[:page] || 1
 
-    if query[:q]
-      search(query[:q]).paginate(list_limit, page)
-    else
-      all.paginate(list_limit, page)
-    end
+    (search(query[:q]).paginate(result_size, page) if query[:q]) \
+      || all.paginate(result_size, page)
   end
 
-  def self.get_list_limit(query)
-    max_limit = 100
-    (20 unless query[:limit]) || (max_limit if query[:limit] > max_limit) \
+  def self.get_result_size(query)
+    max_result_size = 100
+    default_result_size = 20
+
+    (default_result_size unless query[:limit]) \
+      || (max_result_size if query[:limit] > max_result_size) \
       || query[:limit]
   end
 end

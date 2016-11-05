@@ -10,8 +10,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, on: :create
 
   has_secure_password
-  has_many :bucketlists
-  has_one :token
+  has_many :bucketlists, dependent: :destroy
+  has_one :token, dependent: :destroy
 
   def generate_token
     return nil unless token.blank? || token.expired?

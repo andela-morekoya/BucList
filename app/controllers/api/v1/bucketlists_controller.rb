@@ -1,12 +1,13 @@
 module Api
   module V1
     class BucketlistsController < ApplicationController
-      before_action :set_bucketlist, only: [:show, :edit, :update, :destroy]
-      before_action :authenticate_with_token
+      include Messages
+      before_action :set_bucketlist, only: [:show, :update, :destroy]
+      before_action :authenticate_request
 
       def index
         @bucketlists = Bucketlist.search_and_paginate(params)
-        render json: @bucketlists, status: :ok
+        render json: { bucketlists: @bucketlists }, status: :ok
       end
 
       def show
@@ -19,7 +20,8 @@ module Api
         if @bucketlist.save
           render json: @bucketlist, status: :created
         else
-          render json: @bucketlist, status: :bad_request
+          render json: { error: not_created('Bucketlist') }, \
+                 status: :bad_request
         end
       end
 
@@ -28,10 +30,11 @@ module Api
           if @bucketlist.update(bucketlist_params)
             render json: @bucketlist, status: :ok
           else
-            render json: @bucketlist, status: :bad_request
+            render json: { error: not_updated('Bucketlist') }, \
+                   status: :bad_request
           end
         else
-          render json: @bucketlist, status: :forbidden
+          render json: { error: no_access }, status: :forbidden
         end
       end
 
@@ -40,7 +43,7 @@ module Api
           @bucketlist.destroy
           head 204
         else
-          render json: @bucketlist, status: :forbidden
+          render json: { error: no_access }, status: :forbidden
         end
       end
 

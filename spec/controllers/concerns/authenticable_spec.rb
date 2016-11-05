@@ -22,9 +22,9 @@ RSpec.describe Authenticable do
     end
   end
 
-  describe '#authenticate_with_token' do
+  describe '#authenticate_request' do
     it 'ensures token has a user' do
-      authentication.authenticate_with_token
+      authentication.authenticate_request
       expect(authentication.current_user).to be_present
     end
   end

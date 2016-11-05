@@ -94,7 +94,7 @@ Lint/EnsureReturn:
 
 Lint/Eval:
   Description: 'The use of eval represents a serious security risk.'
-  Enabled: true
+  Enabled: false
 
 Lint/FormatParameterMismatch:
   Description: 'The number of parameters to format/sprint must match the fields.'

@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
-  belongs_to :bucketlist, dependent: :destroy
+  belongs_to :bucketlist
   validates :name, presence: true
 end

@@ -1,13 +1,12 @@
 module Authenticable
-  def authenticate_with_token
-    render json: { error: 'Not authenticated' },
+  include Messages
+  def authenticate_request
+    render json: { error: invalid_token },
            status: :unauthorized unless current_user.present?
   end
 
   def current_user
     @current_user ||= User.find_by(id: (auth_token[:user][:id] if auth_token))
-  rescue JWT::VerificationError, JWT::DecodeError
-    render json: { error: 'Invalid Session' }, status: 403
   end
 
   def auth_token

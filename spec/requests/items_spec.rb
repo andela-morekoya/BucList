@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Items', type: :request do
+  include Messages
   let!(:list) { FactoryGirl.create(:bucketlist) }
 
   let(:item) { FactoryGirl.create(:item, bucketlist_id: list.id) }
@@ -30,7 +31,7 @@ RSpec.describe 'Items', type: :request do
       context 'with valid parameters' do
         it 'creates an item in specified bucket list' do
           post "/api/bucketlists/#{list.id}/items",
-               params: '{ "item": { "name": "New item" } }', headers: header
+               params: '{ "name": "New item" }', headers: header
 
           expect(response).to have_http_status(:created)
           expect(json[:name]).to eq 'New item'
@@ -40,9 +41,10 @@ RSpec.describe 'Items', type: :request do
       context 'with invalid parameters' do
         it 'returns status :bad_request' do
           post "/api/bucketlists/#{list.id}/items",
-               params: '{ "item": { "name": "" } }', headers: header
+               params: '{ "name": "" }', headers: header
 
           expect(response).to have_http_status(:bad_request)
+          expect(json[:error]).to eq not_created('Item')
         end
       end
     end
@@ -61,7 +63,7 @@ RSpec.describe 'Items', type: :request do
       context 'with valid parameters' do
         it 'updates a single item in specified bucket list' do
           put "/api/bucketlists/#{list.id}/items/#{item.id}",
-              params: '{ "item": { "done": "true" } }', headers: header
+              params: '{ "done": "true" }', headers: header
 
           expect(response).to have_http_status(:ok)
           expect(json[:done]).to eq true
@@ -71,9 +73,10 @@ RSpec.describe 'Items', type: :request do
       context 'with invalid parameters' do
         it 'returns status :bad_request' do
           put "/api/bucketlists/#{list.id}/items/#{item.id}",
-              params: '{ "item": { "name": "" } }', headers: header
+              params: '{ "name": "" }', headers: header
 
           expect(response).to have_http_status(:bad_request)
+          expect(json[:error]).to eq not_updated('Item')
         end
       end
     end
@@ -106,7 +109,7 @@ RSpec.describe 'Items', type: :request do
     describe 'POST /bucketlists/<id>/items' do
       it 'returns an unauthorized status' do
         post "/api/bucketlists/#{list.id}/items",
-             params: '{ "item": { "name": "New item" } }',
+             params: '{ "name": "New item" }',
              headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)
@@ -125,7 +128,7 @@ RSpec.describe 'Items', type: :request do
     describe 'PUT /bucketlists/<id>/items/<id>' do
       it 'returns an unauthorized status' do
         put "/api/bucketlists/#{list.id}/items/#{item.id}",
-            params: '{ "item": { "done": "true" } }',
+            params: '{ "done": "true" }',
             headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)

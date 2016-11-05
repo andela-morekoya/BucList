@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Bucketlists', type: :request do
+  include Messages
   context 'when valid authorization token is sent' do
     let!(:list) { FactoryGirl.create(:bucketlist) }
 
@@ -18,9 +19,11 @@ RSpec.describe 'Bucketlists', type: :request do
       it 'lists all the created bucket lists' do
         get api_bucketlists_path, headers: header
 
+        result = eval(ActiveModelSerializers::SerializableResource
+            .new(Bucketlist.all, {}).to_json)
+
         expect(response).to have_http_status(:ok)
-        expect(response.body).to eq ActiveModelSerializers::SerializableResource
-          .new(Bucketlist.all, {}).to_json
+        expect(json[:bucketlists][0][:name]).to eq result[0][:name]
       end
     end
 
@@ -28,7 +31,7 @@ RSpec.describe 'Bucketlists', type: :request do
       context 'with valid params' do
         it 'creates a new bucket list' do
           post api_bucketlists_path,
-               params: ' { "name": "New List" }',
+               params: '{ "name": "New List" }',
                headers: header
 
           expect(response).to have_http_status(:created)
@@ -43,6 +46,7 @@ RSpec.describe 'Bucketlists', type: :request do
                headers: header
 
           expect(response).to have_http_status(:bad_request)
+          expect(json[:error]).to eq not_created('Bucketlist')
         end
       end
     end
@@ -75,6 +79,7 @@ RSpec.describe 'Bucketlists', type: :request do
                   headers: header
 
             expect(response).to have_http_status(:bad_request)
+            expect(json[:error]).to eq not_updated('Bucketlist')
           end
         end
       end
@@ -87,6 +92,7 @@ RSpec.describe 'Bucketlists', type: :request do
                 headers: header
 
           expect(response).to have_http_status(:forbidden)
+          expect(json[:error]).to eq no_access
         end
       end
     end
@@ -108,6 +114,7 @@ RSpec.describe 'Bucketlists', type: :request do
                  params: '{ "id": 1 }', headers: header
 
           expect(response).to have_http_status(:forbidden)
+          expect(json[:error]).to eq no_access
         end
       end
     end
@@ -116,7 +123,7 @@ RSpec.describe 'Bucketlists', type: :request do
   context 'when no authorization token is sent' do
     let!(:list) { FactoryGirl.create(:bucketlist) }
 
-    let(:unauthorised_header) do
+    let(:unauthorized_header) do
       {
         'ACCEPT' => 'application/vnd.buclist.v1',
         'CONTENT-TYPE' => 'application/json'
@@ -125,9 +132,10 @@ RSpec.describe 'Bucketlists', type: :request do
 
     describe 'GET /bucketlists' do
       it 'returns an unauthorized status' do
-        get api_bucketlists_path, headers: unauthorised_header
+        get api_bucketlists_path, headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)
+        expect(json[:error]).to eq invalid_token
       end
     end
 
@@ -135,17 +143,19 @@ RSpec.describe 'Bucketlists', type: :request do
       it 'returns an unauthorized status' do
         post api_bucketlists_path,
              params: '{ "name": "New List" }',
-             headers: unauthorised_header
+             headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)
+        expect(json[:error]).to eq invalid_token
       end
     end
 
     describe 'GET /bucketlists/<id>' do
       it 'returns an unauthorized status' do
-        get "/api/bucketlists/#{list.id}", headers: unauthorised_header
+        get "/api/bucketlists/#{list.id}", headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)
+        expect(json[:error]).to eq invalid_token
       end
     end
 
@@ -153,18 +163,20 @@ RSpec.describe 'Bucketlists', type: :request do
       it 'returns an unauthorized status' do
         patch "/api/bucketlists/#{list.id}",
               params: '{ "name": "Changed List" }',
-              headers: unauthorised_header
+              headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)
+        expect(json[:error]).to eq invalid_token
       end
     end
 
     describe 'DELETE /bucketlists/<id>' do
       it 'returns an unauthorized status' do
         delete "/api/bucketlists/#{list.id}",
-               params: '{ "id": 1 }', headers: unauthorised_header
+               params: '{ "id": 1 }', headers: unauthorized_header
 
         expect(response).to have_http_status(:unauthorized)
+        expect(json[:error]).to eq invalid_token
       end
     end
   end

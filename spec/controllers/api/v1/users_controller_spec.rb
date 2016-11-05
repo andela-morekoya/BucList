@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
+  include Messages
   describe '#create' do
     context 'with valid params' do
       let(:valid_params) { FactoryGirl.attributes_for(:user) }
       it 'renders the details of resource created' do
         process :create, method: :post, params: valid_params
 
-        user_response = JSON.parse(response.body)
-        expect(user_response['email']).to eq valid_params[:email]
+        expect(json[:user][:email]).to eq valid_params[:email]
+        expect(json[:next_step]).to eq login
       end
     end
 
@@ -17,6 +18,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         process :create, method: :post, params: { user: { email: 'invalid' } }
 
         expect(response).to have_http_status :unprocessable_entity
+        expect(json[:error]).to eq not_created('User')
       end
     end
   end
