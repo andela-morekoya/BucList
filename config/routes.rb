@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post "/auth/login"    => "auth#login"
       delete "/auth/logout"    => "auth#logout"
       resources :users, only: [:create]
-      resources :bucketlists do`
+      resources :bucketlists do
         resources :items
       end
     end
