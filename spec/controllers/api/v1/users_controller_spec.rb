@@ -9,7 +9,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         process :create, method: :post, params: valid_params
 
         expect(json[:user][:email]).to eq valid_params[:email]
-        expect(json[:next_step]).to eq login
+        expect(json[:message]).to eq login
       end
     end
 

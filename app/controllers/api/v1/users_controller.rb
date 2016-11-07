@@ -6,7 +6,7 @@ module Api
         @user = User.new(user_params)
 
         if @user.save
-          render json: { user: @user, next_step: login }, status: :ok
+          render json: { user: @user, message: login }, status: :ok
         else
           render json: { error: not_created('User') },
                  status: :unprocessable_entity

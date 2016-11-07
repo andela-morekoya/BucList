@@ -4,10 +4,6 @@ abort('The Rails environment is running in production mode!') \
   if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-require 'coveralls'
-Coveralls.wear!('rails')
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
