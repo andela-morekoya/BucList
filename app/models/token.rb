@@ -7,7 +7,7 @@ class Token < ApplicationRecord
     Time.now > expires_at
   end
 
-  def self.get_user_id(token)
+  def self.token_user_id(token)
     result = find_by_token(token)
     result.user_id if result
   end
