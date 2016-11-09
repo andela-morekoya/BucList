@@ -4,3 +4,7 @@ rvm:
 script: 
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec spec/
+cache: bundler
+addons:
+  code_climate:
+    repo_token: 1b50da39de5a5c7170ba2356af61f98a76f957f48af901707fa791e604963a7a

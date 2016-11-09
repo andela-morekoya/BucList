@@ -25,6 +25,7 @@ config/initializers/secret_token.rb
 *.DS_Store
 .AppleDouble
 .LSOverride
+*.swp
 
 # Icon must end with two \r
 Icon
