@@ -7,28 +7,28 @@ module Api
       before_action :set_bucketlist, only: [:create]
 
       def index
-        render json: Item.all, status: :ok
+        render json: { items: Item.all }, status: :ok
       end
 
       def show
-        render json: @item, status: :ok
+        render json: { item: @item }, status: :ok
       end
 
       def create
         @item = @bucketlist.items.build(item_params)
 
         if @item.save
-          render json: @item, status: :created
+          render json: { item: @item }, status: :created
         else
-          render json: { error: not_created('Item') }, status: :bad_request
+          render json: { errors: not_created('Item') }, status: :bad_request
         end
       end
 
       def update
         if @item.update(item_params)
-          render json: @item, status: :ok
+          render json: { item: @item }, status: :ok
         else
-          render json: { error: not_updated('Item') }, status: :bad_request
+          render json: { errors: not_updated('Item') }, status: :bad_request
         end
       end
 

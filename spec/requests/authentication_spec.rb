@@ -20,7 +20,7 @@ RSpec.describe 'Authentication', type: :request do
         credentials = { email: user.email, password: 'wrong' }
         post '/api/auth/login', params: credentials
 
-        expect(json[:error]).to eq failed_login
+        expect(json[:errors]).to eq failed_login
         expect(response).to have_http_status :unauthorized
       end
     end
@@ -48,7 +48,7 @@ RSpec.describe 'Authentication', type: :request do
         delete '/api/auth/logout', params: {}, headers: header
         user.reload
 
-        expect(json[:error]).to eq invalid_token
+        expect(json[:errors]).to eq invalid_token
       end
     end
 
@@ -57,7 +57,7 @@ RSpec.describe 'Authentication', type: :request do
         delete '/api/auth/logout', params: {}, headers: {}
         user.reload
 
-        expect(json[:error]).to eq invalid_token
+        expect(json[:errors]).to eq invalid_token
       end
     end
   end

@@ -22,4 +22,8 @@ module Messages
   def invalid_token
     'Your token is invalid'
   end
+
+  def no_route_found
+    'That endpoint does not exist'
+  end
 end

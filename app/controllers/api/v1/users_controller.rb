@@ -8,7 +8,7 @@ module Api
         if @user.save
           render json: { user: @user, message: login }, status: :ok
         else
-          render json: { error: not_created('User') },
+          render json: { errors: not_created('User') },
                  status: :unprocessable_entity
         end
       end

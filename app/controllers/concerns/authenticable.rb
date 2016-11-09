@@ -1,7 +1,7 @@
 module Authenticable
   include Messages
   def authenticate_request
-    render json: { error: invalid_token },
+    render json: { errors: invalid_token },
            status: :unauthorized unless current_user.present?
   end
 
