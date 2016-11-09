@@ -8,7 +8,7 @@ class Bucketlist < ApplicationRecord
   end
 
   scope :paginate, ->(result_size, page) do
-    limit(result_size.abs).offset((page - 1).abs * result_size)
+    limit(result_size.abs).offset((page.to_i - 1).abs * result_size)
   end
 
   def self.search_and_paginate(query = {})
