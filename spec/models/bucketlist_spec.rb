@@ -10,7 +10,7 @@ RSpec.describe Bucketlist, type: :model do
     it { is_expected.to validate_presence_of :name }
   end
 
-  describe 'search' do
+  describe '.search' do
     let(:dream) { FactoryGirl.create(:bucketlist, name: 'My life dreams') }
 
     context 'when query is in bucketlist' do
@@ -26,12 +26,12 @@ RSpec.describe Bucketlist, type: :model do
     end
   end
 
-  describe '.search_and_paginate' do
-    before { 125.times { FactoryGirl.create(:bucketlist) } }
+  describe '.paginate' do
+    before { 101.times { FactoryGirl.create(:bucketlist) } }
 
     context 'when no query is present' do
       it 'lists all bucketlists limited by the result default size' do
-        result = Bucketlist.search_and_paginate
+        result = Bucketlist.paginate(nil, nil)
 
         expect(result.count).to eq 20
       end
@@ -40,7 +40,8 @@ RSpec.describe Bucketlist, type: :model do
     context 'when only page or limit query is present' do
       context 'and limit query greater than maximum allowed' do
         it 'lists all bucketlists limited by the maximum allowed size' do
-          result = Bucketlist.search_and_paginate(limit: 150)
+          params = { limit: '150' }
+          result = Bucketlist.paginate(params[:limit], params[:page])
 
           expect(result.count).to eq 100
         end
@@ -48,8 +49,8 @@ RSpec.describe Bucketlist, type: :model do
 
       context 'and limit query less than maximum allowed' do
         it 'lists all bucketlists limited by the maximum allowed size' do
-          params = { limit: 50 }
-          result = Bucketlist.search_and_paginate(params)
+          params = { limit: '50' }
+          result = Bucketlist.paginate(params[:limit], params[:page])
 
           expect(result.count).to eq 50
         end
@@ -57,8 +58,9 @@ RSpec.describe Bucketlist, type: :model do
 
       context 'and page params is valid' do
         it 'lists all bucketlists starting from specified page' do
-          result = Bucketlist.search_and_paginate(page: 2)
-
+          params = { page: '2' }
+          result = Bucketlist.paginate(params[:limit], params[:page])
+          
           expect(result.first[:name]).to eq Bucketlist.find(21).name
         end
       end

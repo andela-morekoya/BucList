@@ -18,7 +18,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         process :create, method: :post, params: { user: { email: 'invalid' } }
 
         expect(response).to have_http_status :unprocessable_entity
-        expect(json[:error]).to eq not_created('User')
+        expect(json[:errors]).to eq not_created('User')
       end
     end
   end
