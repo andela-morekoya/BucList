@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get "/", to: redirect("/docs/index.html")
 
   namespace :api, defaults: { format: :json } do
+    scope module: :v2, \
+          constraints: ApiConstraints.new(version: 2) do
+
+    end
+
     scope module: :v1, \
           constraints: ApiConstraints.new(version: 1, default: true) do
       post "/auth/login"    => "auth#login"
@@ -11,8 +16,8 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resources :bucketlists do
         resources :items
-      match "/*", to: redirect("no_route"), via: :all
       end
     end
   end
+  match "*route", to: "application#no_route", via: :all
 end
