@@ -60,7 +60,7 @@ RSpec.describe Bucketlist, type: :model do
         it 'lists all bucketlists starting from specified page' do
           params = { page: '2' }
           result = Bucketlist.paginate(params[:limit], params[:page])
-          
+
           expect(result.first[:name]).to eq Bucketlist.find(21).name
         end
       end

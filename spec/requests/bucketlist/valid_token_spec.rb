@@ -19,7 +19,7 @@ RSpec.describe 'Bucketlists', type: :request do
             .new(Bucketlist.all, {}).to_json, symbolize_names: true)
 
         expect(response).to have_http_status(:ok)
-        expect(json[:bucketlists][0][:name]).to eq result[0][:name]
+        expect(json).to eq result
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe 'Bucketlists', type: :request do
                headers: header
 
           expect(response).to have_http_status(:created)
-          expect(json[:bucketlist][:name]).to eq 'New List'
+          expect(json[:name]).to eq 'New List'
         end
       end
 
@@ -64,7 +64,7 @@ RSpec.describe 'Bucketlists', type: :request do
                   headers: header
 
             expect(response).to have_http_status(:ok)
-            expect(json[:bucketlist][:name]).to eq 'Changed List'
+            expect(json[:name]).to eq 'Changed List'
           end
         end
 

@@ -1,13 +1,13 @@
 class Bucketlist < ApplicationRecord
   MAXIMUM_LIMIT = 100
   DEFAULT_LIMIT = 20
-  
+
   belongs_to :user
   has_many :items, dependent: :destroy
   validates :name, presence: true
 
   scope :search, ->(query) do
-    where('lower(name) like ?', "%#{query.downcase if query}%" )
+    where('lower(name) like ?', "%#{query.downcase if query}%")
   end
 
 <<<<<<< HEAD
@@ -19,6 +19,7 @@ class Bucketlist < ApplicationRecord
     result_size = get_result_size(query)
 =======
   def self.paginate(limit_size, page)
+<<<<<<< HEAD
 <<<<<<< HEAD
     page ||= 1 
     
@@ -32,6 +33,9 @@ class Bucketlist < ApplicationRecord
 
 =======
     page ||= 1   
+=======
+    page ||= 1
+>>>>>>> fix errors in documentation
     limit_size = validate_limit(limit_size)
 >>>>>>> remove duplication
     limit(limit_size).offset((page.to_i - 1).abs * limit_size)

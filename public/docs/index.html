@@ -109,7 +109,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='https:/github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -123,14 +123,14 @@
 
 <p>With Buclist API, you can integrate bucketlist functionality into various devices and apps.</p>
 
-<p>The root of all API endpoints is https:/buclist.herokuapp.com/api and all responses are json</p>
+<p>The root of all API endpoints is https://buclist.herokuapp.com/api and all responses are json</p>
 
 <h1 id="registration">Registration</h1>
 
 <blockquote>
 <p>POST /users</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https:/buclist.herokuapp.com/api/users?email=douglass@adams.com&amp;password=p@ssw0rd"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://buclist.herokuapp.com/api/users?email=douglass@adams.com&amp;password=p@ssw0rd"</span>
 </code></pre>
 
 <blockquote>
@@ -155,7 +155,7 @@
 <blockquote>
 <p>POST /auth/login</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https:/buclist.herokuapp.com/api/auth/login?email=douglass@adams.com&amp;password=p@ssw0rd"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://buclist.herokuapp.com/api/auth/login?email=douglass@adams.com&amp;password=p@ssw0rd"</span>
 </code></pre>
 
 <blockquote>
@@ -178,7 +178,7 @@ The token needs to be included in te header of every API request for bucketlists
 <blockquote>
 <p>DELETE /auth/logout</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https:/buclist.herokuapp.com/api/auth/logout"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjozLCJlbWFpbCI6ImFub3RoZXJAZW1haWwuY29tIn19.F2VsF_BuKuiS6Rvg6GFTBCICgn47XFHrNFrDe6D04vA"</span> 
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://buclist.herokuapp.com/api/auth/logout"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjozLCJlbWFpbCI6ImFub3RoZXJAZW1haWwuY29tIn19.F2VsF_BuKuiS6Rvg6GFTBCICgn47XFHrNFrDe6D04vA"</span> 
 </code></pre>
 
 <p>Logout with your authorisation token. This will void the token.</p>
@@ -190,7 +190,7 @@ The token needs to be included in te header of every API request for bucketlists
 <blockquote>
 <p>GET /bucketlists</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://buclist.herokuapp.com/api/bucketlists"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
 
 </code></pre>
 
@@ -246,16 +246,16 @@ The token needs to be included in te header of every API request for bucketlists
 <p>The parameters can be combined.</p>
 
 <aside class="info">
-<code>GET https:/buclist.herokuapp.com/api/bucketlists?q=dream</code> returns the first 20 bucketlists</aside>
+<code>GET https://buclist.herokuapp.com/api/bucketlists?q=dream</code> returns the first 20 bucketlists</aside>
 
 <aside class="info">
-<code>GET https:/buclist.herokuapp.com/api/bucketlists?page=3</code> returns all bucketlists starting from the 61st result.</aside>
+<code>GET https://buclist.herokuapp.com/api/bucketlists?page=3</code> returns all bucketlists starting from the 61st result.</aside>
 
 <aside class="info">
-<code>GET https:/buclist.herokuapp.com/api/bucketlists?limit=40</code> returns the first 40 bucketlists</aside>
+<code>GET https://buclist.herokuapp.com/api/bucketlists?limit=40</code> returns the first 40 bucketlists</aside>
 
 <aside class="info">
-<code>GET https:/buclist.herokuapp.com/api/bucketlists?q=dream&page=2&limit=10</code> returns all bucketlists with &lsquo;dream&rsquo; in the name, starting from the 11th result and showing 10 results</aside>
+<code>GET https://buclist.herokuapp.com/api/bucketlists?q=dream&page=2&limit=10</code> returns all bucketlists with &lsquo;dream&rsquo; in the name, starting from the 11th result and showing 10 results</aside>
 
 <aside class="warning">
 Remember to include your authorisation token in the request header
@@ -266,7 +266,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>POST /bucketlists/</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists?name=Do%20Not%20Panic"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://buclist.herokuapp.com/api/bucketlists?name=Do%20Not%20Panic"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
 </code></pre>
 
 <blockquote>
@@ -303,7 +303,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>GET /bucketlists/:id&gt;</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
 </code></pre>
 
 <blockquote>
@@ -340,7 +340,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>PUT /bucketlists/:id</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1?name="</span>Not%20Again<span class="s2">" -H "</span>Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4<span class="s2">"
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1?name="</span>Not%20Again<span class="s2">" -H "</span>Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4<span class="s2">"
 </span></code></pre>
 
 <blockquote>
@@ -381,7 +381,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>DELETE /bucketlists/:/:id</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
 </code></pre>
 
 <p>This endpoint deletes the Bucketlist with the given id.</p>
@@ -407,7 +407,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>GET /bucketlists/:bucketlist_id/items</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1/items"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1/items"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
 </code></pre>
 
 <blockquote>
@@ -452,7 +452,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>POST /bucketlists/:bucketlist_id/items</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1/items/?name=Pack%2a%20towel"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1/items/?name=Pack%2a%20towel"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span> 
 </code></pre>
 
 <blockquote>
@@ -492,7 +492,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>GET /bucketlists/:bucketlist_id/items/:id</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1/items/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1/items/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
 </code></pre>
 
 <blockquote>
@@ -532,7 +532,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>PUT /bucketlists/:bucketlist_id/items/:id</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1/items/1?name="</span>Petunia<span class="s2">" -H "</span>Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4<span class="s2">" 
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1/items/1?name="</span>Petunia<span class="s2">" -H "</span>Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4<span class="s2">" 
 </span></code></pre>
 
 <blockquote>
@@ -572,7 +572,7 @@ Remember to include your authorisation token in the request header
 <blockquote>
 <p>DELETE /bucketlists/:bucketlist_id/items/:id</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https:/buclist.herokuapp.com/api/bucketlists/1/items/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://buclist.herokuapp.com/api/bucketlists/1/items/1"</span> -H <span class="s2">"Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span>
 </code></pre>
 
 <p>This endpoint deletes the Item with the given id from Bucketlist with the given id.</p>

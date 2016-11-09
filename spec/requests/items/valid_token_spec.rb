@@ -19,7 +19,7 @@ RSpec.describe 'Items', type: :request do
           .new(list.items, {}).to_json, symbolize_names: true)
 
         expect(response).to have_http_status(:ok)
-        expect(json[:items][0][:name]).to eq result[0][:name]
+        expect(json).to eq result
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.describe 'Items', type: :request do
                params: { name: 'New item' }, headers: header
 
           expect(response).to have_http_status(:created)
-          expect(json[:item][:name]).to eq 'New item'
+          expect(json[:name]).to eq 'New item'
         end
       end
 
@@ -53,7 +53,7 @@ RSpec.describe 'Items', type: :request do
           .new(item, {}).to_json, symbolize_names: true)
 
         expect(response).to have_http_status(:ok)
-        expect(json[:item][:name]).to eq result[:name]
+        expect(json[:name]).to eq result[:name]
       end
     end
 
@@ -64,7 +64,7 @@ RSpec.describe 'Items', type: :request do
               params: { done: 'true' }, headers: header
 
           expect(response).to have_http_status(:ok)
-          expect(json[:item][:done]).to eq true
+          expect(json[:done]).to eq true
         end
       end
 
