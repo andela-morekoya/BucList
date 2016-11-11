@@ -3,16 +3,12 @@ module Messages
     'Login Failed'
   end
 
-  def login
-    'Please login to get your authentication token'
-  end
-
   def not_created(data)
-    "Error occured. #{data} was not created"
+    data.errors.messages.each { |key,value| "#{key} #{value}" }
   end
 
   def not_updated(data)
-    "Error occured. #{data} was not created"
+    data.errors.messages.each { |key,value| "#{key} #{value}" }
   end
 
   def no_access

@@ -5,20 +5,25 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe '#create' do
     context 'with valid params' do
       let(:valid_params) { FactoryGirl.attributes_for(:user) }
-      it 'renders the details of resource created' do
+      it 'logs in user' do
         process :create, method: :post, params: valid_params
 
-        expect(json[:user][:email]).to eq valid_params[:email]
-        expect(json[:message]).to eq login
+        expect(response).to have_http_status :ok
+      end
+
+      it 'generates a token for the user' do
+        process :create, method: :post, params: valid_params
+
+        expect(User.last.token).to be_present
       end
     end
 
     context 'with invalid params' do
-      it 'renders error saying why resource could not created' do
+      it 'gives error saying why resource could not created' do
         process :create, method: :post, params: { user: { email: 'invalid' } }
 
         expect(response).to have_http_status :unprocessable_entity
-        expect(json[:errors]).to eq not_created('User')
+        expect(json[:errors]).to be_present
       end
     end
   end

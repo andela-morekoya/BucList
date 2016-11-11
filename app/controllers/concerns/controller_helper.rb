@@ -9,7 +9,7 @@ module ControllerHelper
     if resource.save
       render json: resource, status: :created
     else
-      render json: { errors: not_created(resource.class.name) },
+      render json: { errors: not_created(resource) },
              status: :bad_request
     end
   end
@@ -18,7 +18,7 @@ module ControllerHelper
     if resource.update(params)
       render json: resource, status: :ok
     else
-      render json: { errors: not_updated(resource.class.name) }, \
+      render json: { errors: not_updated(resource) }, \
              status: :bad_request
     end
   end
