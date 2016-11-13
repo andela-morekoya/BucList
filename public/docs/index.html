@@ -134,17 +134,16 @@
 </code></pre>
 
 <blockquote>
-<p>If your request is successful, you would get a resonse like:</p>
+<p>If your request is successful, you would automatically be logged in and given an authentication token:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"douglass@adams.com"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"next_step"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please login to get your authentication token"</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"douglass@adams.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImRvdWdsYXNzQGFkYW1zLmNvbSJ9fQ.v2X9aU-MF7QU_x3Km4EbzE135OMLnbKeAazNhQY7ZG4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T13:39:17.009Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<blockquote>
-<p>After signing up, you will need to login to get an authorisation token</p>
-</blockquote>
 
 <p>To begin using the Buclist API, you need to register an account with the API</p>
 
