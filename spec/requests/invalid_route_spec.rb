@@ -8,4 +8,3 @@ RSpec.describe 'Invalid enpoint', type: :request do
     expect(json[:errors]).to eq no_route_found
   end
 end
-

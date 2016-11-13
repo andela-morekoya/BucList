@@ -8,7 +8,7 @@ RSpec.describe 'Bucketlists', type: :request do
       before { delete "/api/bucketlists/#{list.id}", headers: header }
     end
 
-    context "when bucketlist belongs to another user" do
+    context 'when bucketlist belongs to another user' do
       it_behaves_like 'a forbidden action' do
         before { delete "/api/bucketlists/#{other_list.id}", headers: header }
       end

@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Items', type: :request do
   include_context 'variables'
 
-  let!(:item) { list.items.create(FactoryGirl.attributes_for(:item)) } 
+  let!(:item) { list.items.create(FactoryGirl.attributes_for(:item)) }
 
   describe 'GET /bucketlists/<bucketlist_id>/items' do
     it_behaves_like 'a successful get' do
       let(:array) { list.items }
-    
+
       before do
         get "/api/bucketlists/#{list.id}/items", headers: header
       end

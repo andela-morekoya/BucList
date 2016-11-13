@@ -25,7 +25,7 @@ RSpec.describe 'Bucketlists', type: :request do
       before { put "/api/bucketlists/#{list.id}" }
     end
 
-    context "when bucketlist belongs to another user" do
+    context 'when bucketlist belongs to another user' do
       it_behaves_like 'a forbidden action' do
         before do
           put "/api/bucketlists/#{other_list.id}",

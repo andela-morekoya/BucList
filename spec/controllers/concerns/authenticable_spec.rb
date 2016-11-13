@@ -17,13 +17,13 @@ RSpec.describe Authenticable do
   end
 
   describe '#current_user' do
-    it 'returns the user from the authorization header' do
+    it 'returns the token\'s user' do
       expect(authentication.current_user.token).to eql user.token
     end
   end
 
   describe '#authenticate_request' do
-    it 'ensures token has a user' do
+    it 'ensures token in authorization header is valid' do
       authentication.authenticate_request
       expect(authentication.current_user).to be_present
     end
@@ -37,7 +37,7 @@ RSpec.describe Authenticable do
   end
 
   describe '#http_header_token' do
-    it ' returns a valid token' do
+    it 'returns a valid token' do
       result = authentication.http_header_token
       expect(result).to eq user.token.token
     end

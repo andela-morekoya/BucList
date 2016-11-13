@@ -9,16 +9,16 @@ RSpec.describe 'Bucketlists', type: :request do
 
       before do
         post api_bucketlists_path,
-        params: { name: new_name },
-        headers: header
+             params: { name: new_name },
+             headers: header
       end
     end
 
     it_behaves_like 'the params are invalid' do
       before do
         post api_bucketlists_path,
-          params: invalid_params,
-          headers: header
+             params: invalid_params,
+             headers: header
       end
     end
   end

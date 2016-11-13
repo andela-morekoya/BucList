@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Items', type: :request do
   include_context 'variables'
 
-  let!(:item) { list.items.create(FactoryGirl.attributes_for(:item)) } 
+  let!(:item) { list.items.create(FactoryGirl.attributes_for(:item)) }
 
   describe 'POST /bucketlists/<bucketlist_id>/items' do
     it_behaves_like 'a successful create' do
@@ -11,7 +11,7 @@ RSpec.describe 'Items', type: :request do
 
       before do
         post "/api/bucketlists/#{list.id}/items",
-             params: { name: new_name }, 
+             params: { name: new_name },
              headers: header
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe 'Items', type: :request do
     it_behaves_like 'the params are invalid' do
       before do
         post "/api/bucketlists/#{list.id}/items",
-             params: invalid_params, 
+             params: invalid_params,
              headers: header
       end
     end

@@ -29,15 +29,7 @@ RSpec.describe Bucketlist, type: :model do
   describe '.paginate' do
     before { 101.times { FactoryGirl.create(:bucketlist) } }
 
-    context 'when no query is present' do
-      it 'lists all bucketlists limited by the result default size' do
-        result = Bucketlist.paginate(nil, nil)
-
-        expect(result.count).to eq 20
-      end
-    end
-
-    context 'when only page or limit query is present' do
+    context 'with only limit query present' do
       context 'and limit query greater than maximum allowed' do
         it 'lists all bucketlists limited by the maximum allowed size' do
           params = { limit: '150' }
@@ -55,14 +47,14 @@ RSpec.describe Bucketlist, type: :model do
           expect(result.count).to eq 50
         end
       end
+    end
 
-      context 'and page params is valid' do
-        it 'lists all bucketlists starting from specified page' do
-          params = { page: '2' }
-          result = Bucketlist.paginate(params[:limit], params[:page])
+    context 'with only page params present' do
+      it 'lists all bucketlists starting from specified page' do
+        params = { page: '2' }
+        result = Bucketlist.paginate(params[:limit], params[:page])
 
-          expect(result.first[:name]).to eq Bucketlist.find(21).name
-        end
+        expect(result.first[:name]).to eq Bucketlist.find(21).name
       end
     end
   end

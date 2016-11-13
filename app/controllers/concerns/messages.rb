@@ -4,11 +4,11 @@ module Messages
   end
 
   def not_created(data)
-    data.errors.messages.each { |key,value| "#{key} #{value}" }
+    data.errors.messages.each { |key, value| "#{key} #{value}" }
   end
 
   def not_updated(data)
-    data.errors.messages.each { |key,value| "#{key} #{value}" }
+    data.errors.messages.each { |key, value| "#{key} #{value}" }
   end
 
   def no_access

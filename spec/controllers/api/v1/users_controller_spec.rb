@@ -19,7 +19,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
 
     context 'with invalid params' do
-      it 'gives error saying why resource could not created' do
+      it 'gives error saying why user could not created' do
         process :create, method: :post, params: { user: { email: 'invalid' } }
 
         expect(response).to have_http_status :unprocessable_entity

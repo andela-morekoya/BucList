@@ -6,7 +6,7 @@ module Api
 
       def login
         user = User.find_by(email: params[:email])
-        
+
         if user && user.authenticate(params[:password])
           user.generate_token
           render json: user, status: :ok
