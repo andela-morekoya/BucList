@@ -4,11 +4,9 @@
 
 # Buclist
 
-Buclist is a bucketlist API that lets you manage a bucket list. 
-A bucket list is simply a number of experiences or achievements that a person hopes to have or accomplish during their lifetime. With Buclist, users can integrate bucketlist functionality into various devices and apps. The Buclist API is currently hosted on <a href="https://buclist.herokuapp.com">Heroku</a>.
+Buclist is a bucketlist API that lets you manage a bucket list.
+A bucket list is simply a number of experiences or achievements that a person hopes to have or accomplish during their lifetime. With Buclist, users can integrate bucketlist functionality into various devices and apps. The Buclist API is currently hosted on <a href="https://buclist.herokuapp.com">here</a>.
 
-
-##Table of Contents
 * [Getting Started](#getting-started)
 * [Features](#features)
 * [Dependencies](#dependencies)
@@ -20,7 +18,7 @@ A bucket list is simply a number of experiences or achievements that a person ho
 
 The <a href="https://buclist.herokuapp.com">API Documentation</a> is the best place to get started when using the Buclist API. It is currently on version one.
 
-###Available End Points
+####Available End Points
 |         End Point                               |Function           |
 |-------------------------------------------------|-------------------|
 |POST /users                                      |Create a new user       |
@@ -37,9 +35,9 @@ The <a href="https://buclist.herokuapp.com">API Documentation</a> is the best pl
 |DELETE /bucketlists/(:bucketlist_id)/items/(:id) |Deletes a bucket list item|
 
 
-###Typical Data Model
+####Typical Data Model
 
-A typical bucket list requested by a user could look like this:
+A typical response requested by a user could look like this:
 ````
   {
     id: 1,
@@ -47,7 +45,7 @@ A typical bucket list requested by a user could look like this:
     items: [
            {
                id: 1,
-               name: “Make my first api”,
+               name: “Consume an api”,
                date_created: “2017-08-12 11:57:23”,
                date_modified: “2017-08-12 12:00:00”,
                done: false
@@ -59,7 +57,7 @@ A typical bucket list requested by a user could look like this:
 }
 ````
 
-###End Point Publicity
+####End Point Publicity
 The only endpoints that are available to the public are
 
 |   End Point    |
@@ -68,43 +66,34 @@ The only endpoints that are available to the public are
 |POST /auth/login|
 All other endpoints require the user to be logged in.
 
+## Features
+In addition to the endpoints listed above, the following features are also inclued
 
-### Pagination
+#### Pagination
 Buclist comes with pagination by default, so you can specify the number of results you would like to return via a `GET` request  using the `limit` keyword.
 
-####Example
-**Request:**
-````
-GET https://buclist.herokuapp.com/api/v1/bucketlists?page=2&limit=20
-````
+#####Example
+**Request:** ````GET https://buclist.herokuapp.com/api/v1/bucketlists?page=2&limit=20````
 
-**Response:**
-````
-20 bucket list records belonging to the logged in user starting from the 21st gets returned.
-````
+**Response:** 20 bucket list records belonging to the logged in user starting from the 21st gets returned.
 
-###Searching by Name
+####Searching by Name
 
   Users can search for bucket list by its name using a `GET` request using the 'q' keyword.
 
-####Example
+#####Example
 
-**Request:**
- ````
-  GET https://buclist.herokuapp.com/api/v1/bucketlists?q="awesome"
- ````
+**Request:** ````GET https://buclist.herokuapp.com/api/v1/bucketlists?q="awesome" ````
 
-**Response**:
-
-  Bucket lists with “awesome” in its name gets returned
+**Response**: Bucket lists with “awesome” in its name gets returned.
 
 
-##External Dependencies
+## Dependencies
 
-All our dependencies can be found in our Gemfile. To see a list of all our dependencies, just open it up. However, Ant Bucket has no other dependencies aside from gems list in the Gemfile. Our API only returns JSON so just ensure you can parse JSON from your end and send a request to our server using standard HTTP verbs. 
+All dependencies can be found in the Gemfile. To see a list of all our dependencies, just open it up.
 
 ###Testing
-Testing was implemented with RSpec. Run `bundle exec rspec` in your terminal to go through the test suite
+Testing was implemented with RSpec. Once the repo has been cloned and setup, run `bundle exec rspec` in terminal to go through the test suite
 
 ###Limitations
 The app is currently limited in the following ways
