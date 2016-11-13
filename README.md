@@ -8,17 +8,17 @@ Buclist is a bucketlist API that lets you manage a bucket list.
 A bucket list is simply a number of experiences or achievements that a person hopes to have or accomplish during their lifetime. With Buclist, users can integrate bucketlist functionality into various devices and apps. The Buclist API is currently hosted on <a href="https://buclist.herokuapp.com">Heroku</a>.
 
 
-[TOC]
+##Table of Contents
+* [Getting Started](#getting-started)
+* [Features](#features)
+* [Dependencies](#dependencies)
+* [Testing](#testing)
+* [Limitations](#limitations)
 
 
-###Getting Started
+##Getting Started
 
-Our <a href="https://buclist.herokuapp.com">API Documentation</a> is the best place to get started when using our API is to use our <a href="https://buclist.herokuapp.com">API Documentation</a>. Our API documentation is highly and clearly written.
-  
-###External Dependencies
-
-All our dependencies can be found in our Gemfile. To see a list of all our dependencies, just open it up. However, Ant Bucket has no other dependencies aside from gems list in the Gemfile. Our API only returns JSON so just ensure you can parse JSON from your end and send a request to our server using standard HTTP verbs. 
-
+The <a href="https://buclist.herokuapp.com">API Documentation</a> is the best place to get started when using the Buclist API. It is currently on version one.
 
 ###Available End Points
 |         End Point                               |Function           |
@@ -99,10 +99,9 @@ GET https://buclist.herokuapp.com/api/v1/bucketlists?page=2&limit=20
   Bucket lists with “awesome” in its name gets returned
 
 
-### Versions
+##External Dependencies
 
-This API has only one version for now. However, the above listed enpoints can be accessed via -<a href="https://buclist.herokuapp.com/api/endpoint">https://buclist.herokuapp.com/api/endpoint</a>
-
+All our dependencies can be found in our Gemfile. To see a list of all our dependencies, just open it up. However, Ant Bucket has no other dependencies aside from gems list in the Gemfile. Our API only returns JSON so just ensure you can parse JSON from your end and send a request to our server using standard HTTP verbs. 
 
 ###Testing
 Testing was implemented with RSpec. Run `bundle exec rspec` in your terminal to go through the test suite
