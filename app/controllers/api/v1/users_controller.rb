@@ -9,7 +9,7 @@ module Api
           user.generate_token
           render json: user, status: :ok
         else
-          render json: { errors: not_created(user) },
+          render json: { errors: no_change(user) },
                  status: :unprocessable_entity
         end
       end

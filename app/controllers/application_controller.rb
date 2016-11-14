@@ -3,6 +3,6 @@ class ApplicationController < ActionController::API
   include Messages
 
   def no_route
-    render json: { errors: no_route_found }, status: 404
+    render json: { errors: no_route_found }, status: :not_found
   end
 end

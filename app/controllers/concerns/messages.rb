@@ -3,11 +3,7 @@ module Messages
     'Login Failed'
   end
 
-  def not_created(data)
-    data.errors.messages.each { |key, value| "#{key} #{value}" }
-  end
-
-  def not_updated(data)
+  def no_change(data)
     data.errors.messages.each { |key, value| "#{key} #{value}" }
   end
 
