@@ -11,9 +11,9 @@ class Bucketlist < ApplicationRecord
   end
 
   def self.paginate(limit_size, page)
-    page ||= 1 
+    page ||= 1
     limit_size = validate_limit(limit_size)
-    
+
     limit(limit_size).offset((page.to_i - 1).abs * limit_size)
   end
 
