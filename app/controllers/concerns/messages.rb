@@ -3,16 +3,8 @@ module Messages
     'Login Failed'
   end
 
-  def login
-    'Please login to get your authentication token'
-  end
-
-  def not_created(data)
-    "Error occured. #{data} was not created"
-  end
-
-  def not_updated(data)
-    "Error occured. #{data} was not created"
+  def no_change(data)
+    data.errors.messages.each { |key, value| "#{key} #{value}" }
   end
 
   def no_access
@@ -21,5 +13,9 @@ module Messages
 
   def invalid_token
     'Your token is invalid'
+  end
+
+  def no_route_found
+    'That endpoint does not exist'
   end
 end

@@ -11,7 +11,7 @@ module Api
           user.generate_token
           render json: user, status: :ok
         else
-          render json: { error: failed_login }, status: :unauthorized
+          render json: { errors: failed_login }, status: :unauthorized
         end
       end
 
