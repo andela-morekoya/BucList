@@ -31,7 +31,7 @@ RSpec.describe Token, type: :model do
     end
   end
 
-  describe 'token_user_id' do
+  describe '.token_user_id' do
     context 'when given a token' do
       it 'returns the user id of the token' do
         token = user.token.token
