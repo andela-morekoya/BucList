@@ -7,7 +7,7 @@ RSpec.describe 'Items', type: :request do
 
   describe 'GET /bucketlists/<bucketlist_id>/items' do
     it_behaves_like 'a successful get' do
-      let(:array) { list.items }
+      let(:expected_result) { list.items }
 
       before do
         get "/api/bucketlists/#{list.id}/items", headers: header
@@ -21,7 +21,7 @@ RSpec.describe 'Items', type: :request do
 
   describe 'GET /bucketlists/<bucketlist_id>/items/<id>' do
     it_behaves_like 'a successful get' do
-      let(:array) { item }
+      let(:expected_result) { item }
 
       before do
         get "/api/bucketlists/#{list.id}/items/#{item.id}", headers: header

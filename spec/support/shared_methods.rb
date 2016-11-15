@@ -15,7 +15,7 @@ shared_examples 'a successful get' do
 
   it 'lists the element(s) requested' do
     result = JSON.parse(ActiveModelSerializers::SerializableResource
-          .new(array, {}).to_json, symbolize_names: true)
+          .new(expected_result, {}).to_json, symbolize_names: true)
 
     expect(json).to eq result
   end

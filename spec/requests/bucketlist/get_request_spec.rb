@@ -5,7 +5,7 @@ RSpec.describe 'Bucketlists', type: :request do
 
   describe 'GET /bucketlists' do
     it_behaves_like 'a successful get' do
-      let(:array) { list.user.bucketlists }
+      let(:expected_result) { list.user.bucketlists }
 
       before { get api_bucketlists_path, headers: header }
     end
@@ -17,7 +17,7 @@ RSpec.describe 'Bucketlists', type: :request do
 
   describe 'GET /bucketlists/<id>' do
     it_behaves_like 'a successful get' do
-      let(:array) { list }
+      let(:expected_result) { list }
 
       before { get "/api/bucketlists/#{list.id}", headers: header }
     end
