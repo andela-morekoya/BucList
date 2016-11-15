@@ -8,7 +8,7 @@ class Token < ApplicationRecord
   end
 
   def self.token_user_id(token)
-    result = find_by_token(token)
+    result = find_by(token: token)
     result.user_id if result
   end
 end
