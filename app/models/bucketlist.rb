@@ -6,6 +6,8 @@ class Bucketlist < ApplicationRecord
   has_many :items, dependent: :destroy
   validates :name, presence: true
 
+  default_scope { order(updated_at: :desc) }
+
   scope :search, ->(query) do
     where('lower(name) like ?', "%#{query.downcase if query}%")
   end
@@ -19,8 +21,8 @@ class Bucketlist < ApplicationRecord
 
   def self.validate_limit(limit_size)
     if limit_size
-      (MAXIMUM_LIMIT if limit_size.to_i.abs > MAXIMUM_LIMIT) \
-        || limit_size.to_i.abs
+      limit_size = limit_size.to_i.abs
+      (MAXIMUM_LIMIT if limit_size > MAXIMUM_LIMIT) || limit_size
     else
       DEFAULT_LIMIT
     end
