@@ -7,7 +7,7 @@ module Api
 
         if user.save
           user.generate_token
-          render json: user, status: :ok
+          render json: user, status: :created
         else
           render json: { errors: no_change(user) },
                  status: :unprocessable_entity

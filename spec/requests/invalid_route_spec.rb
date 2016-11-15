@@ -1,4 +1,4 @@
-RSpec.describe 'Invalid enpoint', type: :request do
+RSpec.describe 'Invalid endpoint', type: :request do
   include Messages
   include_context 'variables'
 

@@ -4,7 +4,7 @@ RSpec.describe 'Authentication', type: :request do
   include Messages
   let(:user) { FactoryGirl.create(:user, password: 'correct') }
 
-  describe '#login' do
+  describe 'POST /auth/login' do
     context 'with correct login details' do
       it "displays user's token" do
         credentials = { email: user.email, password: 'correct' }
@@ -26,7 +26,7 @@ RSpec.describe 'Authentication', type: :request do
     end
   end
 
-  describe '#logout' do
+  describe 'DELETE /auth/logout' do
     context 'with valid authentication token' do
       before { user.generate_token }
 

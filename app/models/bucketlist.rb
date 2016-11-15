@@ -22,7 +22,7 @@ class Bucketlist < ApplicationRecord
   def self.validate_limit(limit_size)
     if limit_size
       limit_size = limit_size.to_i.abs
-      return MAXIMUM_LIMIT if (limit_size > MAXIMUM_LIMIT)
+      return MAXIMUM_LIMIT if limit_size > MAXIMUM_LIMIT
       limit_size
     else
       DEFAULT_LIMIT
