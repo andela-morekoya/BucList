@@ -4,7 +4,7 @@ RSpec.describe 'Authentication', type: :request do
   include Messages
   let(:user) { FactoryGirl.create(:user, password: 'correct') }
 
-  describe '#login' do
+  describe 'POST /auth/login' do
     context 'with correct login details' do
       it "displays user's token" do
         credentials = { email: user.email, password: 'correct' }
@@ -20,13 +20,13 @@ RSpec.describe 'Authentication', type: :request do
         credentials = { email: user.email, password: 'wrong' }
         post '/api/auth/login', params: credentials
 
-        expect(json[:error]).to eq failed_login
+        expect(json[:errors]).to eq failed_login
         expect(response).to have_http_status :unauthorized
       end
     end
   end
 
-  describe '#logout' do
+  describe 'DELETE /auth/logout' do
     context 'with valid authentication token' do
       before { user.generate_token }
 
@@ -48,7 +48,7 @@ RSpec.describe 'Authentication', type: :request do
         delete '/api/auth/logout', params: {}, headers: header
         user.reload
 
-        expect(json[:error]).to eq invalid_token
+        expect(json[:errors]).to eq invalid_token
       end
     end
 
@@ -57,7 +57,7 @@ RSpec.describe 'Authentication', type: :request do
         delete '/api/auth/logout', params: {}, headers: {}
         user.reload
 
-        expect(json[:error]).to eq invalid_token
+        expect(json[:errors]).to eq invalid_token
       end
     end
   end

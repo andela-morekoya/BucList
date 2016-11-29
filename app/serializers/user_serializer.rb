@@ -1,4 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :email
+  attribute :email
   has_one :token
 end

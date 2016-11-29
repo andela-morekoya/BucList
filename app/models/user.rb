@@ -18,8 +18,10 @@ class User < ApplicationRecord
 
     payload = { user: { id: id, email: email } }
     user_token = JsonWebToken.encode(payload)
-    create_token(user_id: id,
-                 token: user_token,
-                 expires_at: 2.hours.from_now)
+    create_token(
+      user_id: id,
+      token: user_token,
+      expires_at: 2.hours.from_now
+    )
   end
 end

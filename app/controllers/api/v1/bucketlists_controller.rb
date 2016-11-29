@@ -2,12 +2,18 @@ module Api
   module V1
     class BucketlistsController < ApplicationController
       include Messages
-      before_action :set_bucketlist, only: [:show, :update, :destroy]
+      include ControllerHelper
       before_action :authenticate_request
+      before_action :set_bucketlist, only: [:show, :update, :destroy]
 
       def index
-        @bucketlists = Bucketlist.search_and_paginate(params)
-        render json: { bucketlists: @bucketlists }, status: :ok
+        @bucketlists = current_user.bucketlists.search(params[:q])
+
+        if params[:page] || params[:limit]
+          @bucketlists = @bucketlists.paginate(params[:limit], params[:page])
+        end
+
+        render json: @bucketlists, status: :ok
       end
 
       def show
@@ -16,41 +22,23 @@ module Api
 
       def create
         @bucketlist = current_user.bucketlists.build(bucketlist_params)
-
-        if @bucketlist.save
-          render json: @bucketlist, status: :created
-        else
-          render json: { error: not_created('Bucketlist') }, \
-                 status: :bad_request
-        end
+        create_resource(@bucketlist)
       end
 
       def update
-        if @bucketlist.user_id == current_user.id
-          if @bucketlist.update(bucketlist_params)
-            render json: @bucketlist, status: :ok
-          else
-            render json: { error: not_updated('Bucketlist') }, \
-                   status: :bad_request
-          end
-        else
-          render json: { error: no_access }, status: :forbidden
-        end
+        update_resource(@bucketlist, bucketlist_params)
       end
 
       def destroy
-        if @bucketlist.user_id == current_user.id
-          @bucketlist.destroy
-          head 204
-        else
-          render json: { error: no_access }, status: :forbidden
-        end
+        @bucketlist.destroy
+        head 204
       end
 
       private
 
       def set_bucketlist
-        @bucketlist = Bucketlist.find(params[:id])
+        @bucketlist = Bucketlist.find_by(id: params[:id])
+        authorize_user
       end
 
       def bucketlist_params
