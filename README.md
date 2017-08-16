@@ -14,11 +14,11 @@ A bucket list is simply a number of experiences or achievements that a person ho
 * [Limitations](#limitations)
 
 
-##Getting Started
+## Getting Started
 
 The <a href="https://buclist.herokuapp.com">API Documentation</a> is the best place to get started when using the Buclist API. It is currently on version one.
 
-####Available End Points
+#### Available End Points
 |         End Point                               |Function           |
 |-------------------------------------------------|-------------------|
 |POST /users                                      |Create a new user       |
@@ -35,7 +35,7 @@ The <a href="https://buclist.herokuapp.com">API Documentation</a> is the best pl
 |DELETE /bucketlists/(:bucketlist_id)/items/(:id) |Deletes a bucket list item|
 
 
-####Typical Data Model
+#### Typical Data Model
 
 A typical response requested by a user could look like this:
 ````
@@ -57,7 +57,7 @@ A typical response requested by a user could look like this:
 }
 ````
 
-####End Point Publicity
+#### End Point Publicity
 The only endpoints that are available to the public are
 
 |   End Point    |
@@ -72,16 +72,16 @@ In addition to the endpoints listed above, the following features are also inclu
 #### Pagination
 Buclist comes with pagination by default, so you can specify the number of results you would like to return via a `GET` request  using the `limit` keyword.
 
-#####Example
+##### Example
 **Request:** ````GET https://buclist.herokuapp.com/api/v1/bucketlists?page=2&limit=20````
 
 **Response:** 20 bucket list records belonging to the logged in user starting from the 21st gets returned.
 
-####Searching by Name
+#### Searching by Name
 
   Users can search for bucket list by its name using a `GET` request using the 'q' keyword.
 
-#####Example
+##### Example
 
 **Request:** ````GET https://buclist.herokuapp.com/api/v1/bucketlists?q="awesome" ````
 
@@ -92,10 +92,10 @@ Buclist comes with pagination by default, so you can specify the number of resul
 
 All dependencies can be found in the Gemfile. To see a list of all our dependencies, just open it up.
 
-###Testing
+### Testing
 Testing was implemented with RSpec. Once the repo has been cloned and setup, run `bundle exec rspec` in terminal to go through the test suite
 
-###Limitations
+### Limitations
 The app is currently limited in the following ways
  - It cannot search for items within a bucketlist
  - It has not been optimized for a large volume of users
